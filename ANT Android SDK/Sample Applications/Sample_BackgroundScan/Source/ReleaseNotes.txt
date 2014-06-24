@@ -1,0 +1,4 @@
+Acquire Channels Backgorund Scan - Release Notes
+
+Uses:
+Android ANT Lib       : 4.2.0

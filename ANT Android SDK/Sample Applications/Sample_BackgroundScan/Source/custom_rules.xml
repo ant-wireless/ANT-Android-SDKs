@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ANT Stack
+ 
+ Copyright 2012 Dynastream Innovations
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+     http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and  
+ limitations under the License.
+-->
+<project>
+    <!-- version-tag: 1 -->
+
+    <property
+        name="cvs.android.dir"
+        value="${dsicvs.dir}/Products/android" />
+
+    <property
+        name="build.app.dir"
+        value="${cvs.android.dir}/build/app-build" />
+		
+	<property
+		name="current.project.dir"
+		value="${basedir}" />
+
+    <!--
+        Import ANT Wireless custom build rules if present.
+        This is the place to put custom intermediary targets such as:
+            -pre-build
+            -pre-compile
+            -post-compile (This is typically used for code obfuscation.
+                           Compiled code location: ${out.classes.absolute.dir}
+                           If this is not done in place, override ${out.dex.input.absolute.dir})
+            -post-package
+            -post-build
+            -pre-clean
+    -->
+
+    <import
+        file="${build.app.dir}/custom_rules.xml"
+        optional="true" />
+		
+</project>

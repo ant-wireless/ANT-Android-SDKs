@@ -1,0 +1,98 @@
+ANT Android Emulator Bridge USER GUIDE
+
+Contact us at:
+ANT Wireless
+http://www.thisisant.com
+
+------------------------------
+CONTENTS:
+
+1. OVERVIEW
+2. INITIALISE BRIDGE
+3. USAGE
+4. TRAY ICON USAGE
+5. BUFFERED BURSTING
+
+------------------------------
+
+
+1. OVERVIEW
+
+   This program bridges ANT traffic between an Android emulator and an ANT USB 
+   stick connected to a Windows PC.
+
+
+2. INITIALISE BRIDGE
+
+   1. Start the program
+   2. Select the desired USB to use from the drop down menu
+   3. Choose which port to use
+   4. Click connect
+      - You will get prompted that your firewall is blocking the selected
+        port, and if it should allow this program through. Click Unblock
+   5. Check your computer's IP address (this can be found with command line's
+      ipconfig command. Start > run > cmd > ipconfig >
+      IPv4 Address. . . . . . . . . . . : x.x.x.x
+
+
+3. USAGE
+
+   Layout. From top left to bottom right:
+
+   * Port configuration: 
+        Click Config Port to change what port you're using.
+   * Connect to USB: 
+        Select the ANT USB device to use from the drop down menu, then click 
+        connect.
+   * Status textbox: 
+        Basic output regarding what the program is doing.
+   * Buffered Bursting checkbox: 
+        Choose whether or not to buffer bursts. See Buffered Bursting section 
+        for pros and cons on both configurations.
+   * Clear button: 
+        Clears the traffic logs.
+   * Traffic logs: 
+        Displays the hex output of the messages sent from emulator to USB and 
+        back.
+
+   Usage tips:
+
+   * While the Emulator Bridge is connected to the emulator don't suddenly close
+     the connection (Disconnecting or Exiting). First close any open ANT apps,
+     and the emulator, then close the Emulator Bridge.
+
+
+4. TRAY ICON USAGE
+
+   * Yellow icon: 
+        Either ANT or the emulator are not connected to the program.
+   * White icon: 
+        Both ANT and the emulator are connected, the program is
+        bridging ANT traffic.
+   * Red icon: 
+        An error has occurred.
+
+   In addition to these you can check the tooltip for the current program 
+   state, or right click the icon for a menu
+
+
+5. BUFFERED BURSTING
+
+   Because of possible latency on the TCP connection, bursting does not work as 
+   it would on a physical Android phone with an ANT chip.
+
+   * Without buffered bursting:
+        There is a chance not enough data packets will arrive to the bridge app,
+        and the burst will starve and fail.
+        This approach ensures the emulator stays in sync with the ANT USB and 
+        the messages are handled the same way as on a physical device, but fails
+        much more frequently; especially with longer bursts.
+   * With buffered bursting:
+        All the packets will be received and buffered, without being forwarded. 
+        When the last packet is received the bridge app transmits all the data 
+        to the ANT USB.
+        This approach ensures the burst will not starve, but will desynchronize 
+        the emulator and the ANT USB.
+        As a side note: The ANT chip is still active while the emulator bridge 
+        is buffering the burst, so you may receive extra messages until the 
+        event transfer start.

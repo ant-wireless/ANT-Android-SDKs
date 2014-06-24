@@ -1,0 +1,4 @@
+Acquire Channels Sample - Release Notes
+
+Uses:
+Android ANT Lib       : 4.2.0

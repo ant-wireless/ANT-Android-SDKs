@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE AndroidXML>
+<!--
+This software is subject to the license described in the License.txt file 
+included with this software distribution. You may not use this file except in compliance 
+with this license.
+
+Copyright (c) Dynastream Innovations Inc. 2013
+All rights reserved.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical" >
+    
+	<ScrollView
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+	        
+	      <LinearLayout
+			android:id="@+id/linearLayout_DataCards"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" >
+
+	          <TextView
+	              android:id="@+id/textView_no_data_page"
+	              android:layout_width="wrap_content"
+	              android:layout_height="wrap_content"
+	              android:layout_gravity="center_horizontal"
+	              android:text="@string/no_activities_available" />
+
+	      </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
