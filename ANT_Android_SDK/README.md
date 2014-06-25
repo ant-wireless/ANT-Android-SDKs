@@ -9,6 +9,17 @@ This SDK is available from:
 * https://github.com/ant-wireless/ANT-Android-SDKs (subscribe as a watcher to be notified of updates)
 
 
+## Quick Start Guide
+1. Ensure ANT Radio Service (ARS) is installed on device
+2. Reference ANTLib library in your application project
+3. Refer to Acquire Channels Sample to see how to:
+    1. Bind to ARS
+    2. Acquire channels
+    3. Configure and open channels
+    4. Send and receive data
+    5. Release channels
+
+
 ## Contents
 * Creating ANT Android Applications (.pdf)
 * API

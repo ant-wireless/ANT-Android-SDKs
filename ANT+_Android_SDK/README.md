@@ -10,6 +10,19 @@ This SDK is available from:
 
 <i>Note about member-only features: As a benefit of ANT+ Membership, members get exclusive access to new profiles and features for a given time period. For more information see http://www.thisisant.com/business/go-ant/levels-and-benefits/. Once your ANT+ Membership is activated, the ANT+ Member-only version of the library can be obtained from http://www.thisisant.com/developer/resources/downloads/ in the member-only release section. </i>
 
+
+## Quick Start Guide
+1. Ensure ANT Radio Service (ARS) is installed on device
+2. Ensure ANT Plugins Service is installed on device
+2. Reference ANT+ PluginLib library in your application project
+3. Refer to PluginSampler to see how to:
+    1. Search for ANT+ devices using MultiDeviceSearch
+    2. Request access to device
+    3. Subscribe to events
+    4. Receive data and send commands
+    5. Release device access using PccDeviceHandle
+
+
 ## Contents
 * Creating ANT+ Android Applications
 * API
