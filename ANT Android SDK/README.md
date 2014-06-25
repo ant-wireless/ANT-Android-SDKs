@@ -86,7 +86,7 @@ v.C.B1 RC1 - 20 June 2014
 > * Fix exception when rapidly unplugging and plugging-in USB sticks
 > * Fix eventBuffering calls failing in legacy interface
 > 
-> ANT USB Service - 18 June 2014 - v.4.5.0 (RC7, RC4)
+> ANT USB Service - 18 June 2014 - v.1.3.0
 > -------------------------------------------------------------
 > * Fix USB access request repeatedly popping up
 > * Fix some issues handling multiple sticks plugged in simultaneously
