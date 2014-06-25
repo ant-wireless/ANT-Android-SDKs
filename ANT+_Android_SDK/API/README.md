@@ -5,7 +5,7 @@ This PluginLib library file, when included in your application, enables you to c
 
 ## Contents
 * PluginLib (.jar) - The library file to include in your project. Refer to special note above for information concerning accessing member-only features.
-* PluginLib Javadoc (\javadoc) - The ANTlib javadoc you can reference from your project
+* PluginLib Javadoc (.zip) - The ANTlib Javadoc you can reference from your project
 * FIT library (.jar) - referenced by several PluginLib functions dealing with ANTFS downloads and FIT files. Include this in your app when using those functions to prevent the compiler from complaining about missing references (For more information on FIT files and formats refer to the full featured FIT SDK download at http://www.thisisant.com/resources/fit/).
 
 Documentation for the latest APIs can also be accessed online at http://www.thisisant.com/APIassets/Android_ANT_plus_plugins_API/index.html

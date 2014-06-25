@@ -1,5 +1,5 @@
 # Android ANT+ SDK v.P.B1 RC1 - 20 June 2014
-This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The pdf _Creating ANT+ Android Applications_ explains how to get started. 
+This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to use ANT wireless technology freely outside of the defined ANT+ profiles, you must use the ANT Android SDK instead.
 
@@ -13,13 +13,13 @@ This SDK is available from:
 ## Contents
 * Creating ANT+ Android Applications
 * API
-  * PluginLib 3.0.0 RC1 (.jar and JavaDoc)
-  * FIT 11.0.0 (.jar and JavaDoc)
+  * PluginLib 3.0.0 RC1 (.jar and Javadoc)
+  * FIT 11.0.0 (.jar)
 * Services
   * ANT+ Plugins Service 3.0.0 RC1 (.apk)
   * Plugin Manager Launcher 1.1.0 (.apk)
 * Sample Applications
-  * Plugin Sampler 3.0.0 RC1(.apk and Source)
+  * Plugin Sampler 3.0.0 RC1(.apk and source)
   * ANT+ Demo 3.1.0 (.apk)
   * Heart Rate Grapher 2.1.0 (.apk)
 
@@ -69,8 +69,7 @@ This SDK is available from:
 > ###Exclusive New Features for ANT+ Members 
 > ####<i>(ANT+ Members get exclusive access to new profiles for a given period of time, will be released publically at a later time)</i>
 > 
-> * Add Fitness Equipment Open Access support
-> * Add Fitness Equipment Trainer Profile support
+> * Add Fitness Equipment Controls (including trainer, stationary bike, and open broadcast connections) support
 > * Add support for bike speed and cadence new pages 4 and 5
 > * Add support for battery identifier and number of batteries information to battery status event
 > <br>

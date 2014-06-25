@@ -1,5 +1,5 @@
 # Android ANT+ Services
-The included services are applications that run in the background which allow communication between apps and the ANT hardware. Services required by your ANT+ enabled application to run include ANT+ Plugins and ANT Radio Service. These services are available for download through the Play Store and may be pre-installed by device manufacturers.
+The included services are applications that run in the background which allow communication between apps and the ANT hardware. Services required by your ANT+ enabled application to run include ANT+ Plugins and ANT Radio Service. These services are available for download through the Play Store and may be pre-installed by device manufacturers, they are also available in the SDKs here and https://github.com/ant-wireless/ANT-Android-SDKs/tree/master/ANT_Android_SDK/Services, respectively.
 
 For more information on these services and which Android devices support or can support ANT communication refer to http://www.thisisant.com/developer/ant/ant-in-android/.
 

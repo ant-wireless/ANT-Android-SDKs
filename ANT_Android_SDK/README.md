@@ -1,5 +1,5 @@
 # Android ANT SDK v.C.B1 RC1 - 20 June 2014
-This software development kit provides the resources needed to develop an Android application which uses ANT technology to communicate wirelessly between ANT enabled devices. It includes instructions, API and documentation, and reference sample applications. The pdf _Creating ANT Android Applications_ explains how to get started. 
+This software development kit provides the resources needed to develop an Android application which uses ANT technology to communicate wirelessly between ANT enabled devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to connect to ANT+ devices on the ANT+ network, you must use the ANT+ Android SDK instead.
 
@@ -12,7 +12,7 @@ This SDK is available from:
 ## Contents
 * Creating ANT Android Applications (.pdf)
 * API
-  * ANT Lib 4.5.0 RC4 (.jar and javaDoc)
+  * ANT Lib 4.5.0 RC4 (.jar and Javadoc)
 * Services
   * ANT Radio Service 4.5.0 RC7 (.apk)
   * ANT USB Service 1.3.0 (.apk)

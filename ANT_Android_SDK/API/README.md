@@ -4,7 +4,7 @@ This ANTlib library file, when included in your application, enables you to util
 
 ## Contents
 * ANTLib (.jar) - The ANTlib library file to include in your project
-* ANTLib Javadoc (\javadoc) - The ANTlib javadoc you can reference from your project
+* ANTLib Javadoc (.zip) - The ANTlib Javadoc you can reference from your project
 
 Documentation for the latest APIs can also be accessed online at http://www.thisisant.com/APIassets/Android_ANT_API/index.html
 

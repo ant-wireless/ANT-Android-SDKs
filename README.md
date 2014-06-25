@@ -18,7 +18,7 @@ This SDK is available from:
 * <i>Android ANT+ SDK v.P.B1.MO1 RC1 - 20 June 2014 - Members-only release with trainer profile support, only availble to ANT+ Members from http://www.thisisant.com/developer/resources/downloads/</i>
 
 # Changelog
-See the readme in each respective SDK directory for a detailed changelog.
+See the README.md file in each respective SDK directory for a detailed changelog.
 
 # FAQ
 **What is ANT?**
