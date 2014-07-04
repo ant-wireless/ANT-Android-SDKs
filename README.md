@@ -13,7 +13,7 @@ This SDK is available from:
 * https://github.com/ant-wireless/ANT-Android-SDKs (subscribe as a watcher to be notified of updates)
 
 # Current Versions:
-* Android ANT SDK v.C.B1 RC1 - 20 June 2014
+* Android ANT SDK v.C.B2 - 9 July 2014
 * Android ANT+ SDK v.P.B1 RC1 - 20 June 2014
 * <i>Android ANT+ SDK v.P.B1.MO1 RC1 - 20 June 2014 - Members-only release with trainer profile support, only availble to ANT+ Members from http://www.thisisant.com/developer/resources/downloads/</i>
 
