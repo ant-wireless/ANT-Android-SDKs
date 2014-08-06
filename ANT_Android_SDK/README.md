@@ -1,4 +1,4 @@
-# Android ANT SDK v.C.B2 - 9 July 2014
+# Android ANT SDK v.C.B3 - 8 Aug 2014
 This software development kit provides the resources needed to develop an Android application which uses ANT technology to communicate wirelessly between ANT enabled devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to connect to ANT+ devices on the ANT+ network, you must use the ANT+ Android SDK instead.
@@ -23,9 +23,9 @@ This SDK is available from:
 ## Contents
 * Creating ANT Android Applications (.pdf)
 * API
-  * ANT Lib 4.6.0 (.jar and Javadoc)
+  * ANT Lib 4.7.0 (.jar and Javadoc)
 * Services
-  * ANT Radio Service 4.6.0 (.apk)
+  * ANT Radio Service 4.7.0 (.apk)
   * ANT USB Service 1.3.0 (.apk)
 * Sample Applications
   * Acquire Channels Sample 1.1.0 (.apk and source)
@@ -42,6 +42,17 @@ If you have any questions about developing ANT applications or need help visit t
 
 Android ANT SDK Changelog
 ==========================================
+
+v.C.B3 - 9 July 2014
+-----------------------------------------
+> ANT Radio Service and ANTLib - 8 Aug 2014 - v.4.7.0
+> -----------------------------------------------------
+> * Fix service to be visible on Play Store for phones without bluetooth again
+> * Fix null pointer crash in ChannelCloseController.onChannelMessage() when adapter changes state
+> * Fix burst function to return earlier when channel drops to search instead of waiting the full search timeout period
+> * Fix required and desired capabilities to work again when requesting channels (was broken since 4.4.0)
+> * Note: AntLib is unchanged since 4.6.0 but version number was updated to keep in sync with service
+
 
 v.C.B2 - 9 July 2014
 -----------------------------------------
