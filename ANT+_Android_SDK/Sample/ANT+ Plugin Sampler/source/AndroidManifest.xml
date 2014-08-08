@@ -5,13 +5,13 @@ This software is subject to the license described in the License.txt file
 included with this software distribution. You may not use this file except in compliance 
 with this license.
 
-Copyright (c) Dynastream Innovations Inc. 2013
+Copyright (c) Dynastream Innovations Inc. 2014
 All rights reserved.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dsi.ant.antplus.pluginsampler"
-    android:versionCode="030000"
-    android:versionName="3.0.0.RC1d" >
+    android:versionCode="030100"
+    android:versionName="3.1.0" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -67,20 +67,40 @@ All rights reserved.
             android:screenOrientation="portrait" 
             android:configChanges="orientation"/>
         <activity
-            android:name="com.dsi.ant.antplus.pluginsampler.Activity_AudioControllableDeviceSampler"
-            android:label="Audio Controllable Device Plugin Sampler" 
-            android:screenOrientation="portrait"
-            android:configChanges="orientation"/>
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_AudioControllableDeviceSampler"
+            android:configChanges="orientation"
+            android:label="Audio Controllable Device Plugin Sampler"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.dsi.ant.antplus.pluginsampler.Activity_VideoControllableDeviceSampler"
-            android:label="Video Controllable Device Plugin Sampler" 
-            android:screenOrientation="portrait"
-            android:configChanges="orientation"/>
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_AudioRemoteControlSampler"
+            android:configChanges="orientation"
+            android:label="Audio Remote Control Plugin Sampler"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.dsi.ant.antplus.pluginsampler.Activity_GenericControllableDeviceSampler"
-            android:label="Generic Controllable Device Plugin Sampler" 
-            android:screenOrientation="portrait"
-            android:configChanges="orientation"/>
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoControllableDeviceSampler"
+            android:configChanges="orientation"
+            android:label="Video Controllable Device Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoRemoteControlSampler"
+            android:configChanges="orientation"
+            android:label="Video Remote Control Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericControllableDeviceSampler"
+            android:configChanges="orientation"
+            android:label="Generic Controllable Device Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericRemoteControlSampler"
+            android:configChanges="orientation"
+            android:label="Generic Remote Control Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_MultiRemoteControlSampler"
+            android:configChanges="orientation"
+            android:label="Multi Remote Control Plugin Sampler"
+            android:screenOrientation="portrait" />
         <activity 
             android:name="com.dsi.ant.antplus.pluginsampler.weightscale.Activity_WeightScaleSampler" 
             android:label="Weight Scale Plugin Sampler" 

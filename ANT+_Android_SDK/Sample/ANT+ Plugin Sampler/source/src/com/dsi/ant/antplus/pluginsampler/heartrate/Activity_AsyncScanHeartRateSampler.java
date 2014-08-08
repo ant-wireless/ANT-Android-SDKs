@@ -126,6 +126,7 @@ public class Activity_AsyncScanHeartRateSampler extends Activity_HeartRateDispla
                                     {
                                         //Otherwise the results, including SUCCESS, behave the same as
                                         base_IPluginAccessResultReceiver.onResultReceived(result, resultCode, initialDeviceState);
+                                        hrScanCtrl = null;
                                     }
                                 }
                                 }, base_IDeviceStateChangeReceiver);

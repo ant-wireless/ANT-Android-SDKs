@@ -7,7 +7,7 @@ Copyright (c) Dynastream Innovations Inc. 2013
 All rights reserved.
  */
 
-package com.dsi.ant.antplus.pluginsampler;
+package com.dsi.ant.antplus.pluginsampler.controls;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,14 +21,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dsi.ant.plugins.antplus.pcc.controls.AntPlusAudioControllableDevicePcc;
-import com.dsi.ant.plugins.antplus.pcc.controls.AntPlusAudioControllableDevicePcc.IAudioCommandReceiver;
-import com.dsi.ant.plugins.antplus.pcc.controls.defines.AudioDeviceCapabilities;
-import com.dsi.ant.plugins.antplus.pcc.controls.defines.AudioDeviceState;
-import com.dsi.ant.plugins.antplus.pcc.controls.defines.AudioRepeatState;
-import com.dsi.ant.plugins.antplus.pcc.controls.defines.AudioShuffleState;
+import com.dsi.ant.antplus.pluginsampler.R;
+import com.dsi.ant.plugins.antplus.pcc.controls.AntPlusVideoControllableDevicePcc;
+import com.dsi.ant.plugins.antplus.pcc.controls.AntPlusVideoControllableDevicePcc.IVideoCommandReceiver;
 import com.dsi.ant.plugins.antplus.pcc.controls.defines.AudioVideoCommandNumber;
 import com.dsi.ant.plugins.antplus.pcc.controls.defines.CommandStatus;
+import com.dsi.ant.plugins.antplus.pcc.controls.defines.VideoDeviceCapabilities;
+import com.dsi.ant.plugins.antplus.pcc.controls.defines.VideoDeviceState;
 import com.dsi.ant.plugins.antplus.pcc.defines.DeviceState;
 import com.dsi.ant.plugins.antplus.pcc.defines.EventFlag;
 import com.dsi.ant.plugins.antplus.pcc.defines.RequestAccessResult;
@@ -41,13 +40,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Connects to Controls Plugin, using the Audio mode, and receives audio commands from a remote
+ * Connects to Controls Plugin, using the Video mode, and receives video commands from a remote
  */
-public class Activity_AudioControllableDeviceSampler extends Activity
+public class Activity_VideoControllableDeviceSampler extends Activity
 {
-    AntPlusAudioControllableDevicePcc ctrlPcc = null;
-    PccReleaseHandle<AntPlusAudioControllableDevicePcc> releaseHandle = null;
-    AudioDeviceCapabilities capabilities = new AudioDeviceCapabilities();
+    AntPlusVideoControllableDevicePcc ctrlPcc = null;
+    PccReleaseHandle<AntPlusVideoControllableDevicePcc> releaseHandle;
+    VideoDeviceCapabilities capabilities = new VideoDeviceCapabilities();
 
     int DeviceNumber = 0; // Set to Zero for the pluging to automatically generate the ID
 
@@ -70,7 +69,7 @@ public class Activity_AudioControllableDeviceSampler extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_controls);
+        setContentView(R.layout.activity_controllable_device);
 
         tv_status = (TextView)findViewById(R.id.textView_Status);
         tv_deviceNumber = (TextView)findViewById(R.id.textView_DeviceNumber);
@@ -88,8 +87,8 @@ public class Activity_AudioControllableDeviceSampler extends Activity
         updateTimer = new Timer();  // Timer is used for very rudimentary data simulation
 
         // Configure capabilities
-        capabilities.customRepeatModeSupport = true;
-        capabilities.customShuffleModeSupport = false;
+        capabilities.videoPlaybackSupport = false;
+        capabilities.videoRecorderSupport = true;
     }
 
     private void resetPcc()
@@ -97,6 +96,7 @@ public class Activity_AudioControllableDeviceSampler extends Activity
         if(releaseHandle != null)
         {
             releaseHandle.close();
+            releaseHandle = null;
         }
 
         tv_status.setText("Connecting...");
@@ -111,41 +111,32 @@ public class Activity_AudioControllableDeviceSampler extends Activity
         tv_commandData.setText("---");
 
 
-        releaseHandle = AntPlusAudioControllableDevicePcc.requestAccess(this, new IPluginAccessResultReceiver<AntPlusAudioControllableDevicePcc>()
+        releaseHandle = AntPlusVideoControllableDevicePcc.requestAccess(this, new IPluginAccessResultReceiver<AntPlusVideoControllableDevicePcc>()
             {
             @Override
-            public void onResultReceived(AntPlusAudioControllableDevicePcc result, RequestAccessResult requestAccessResult, DeviceState initialDeviceState)
+            public void onResultReceived(AntPlusVideoControllableDevicePcc result, RequestAccessResult requestAccessResult, DeviceState initialDeviceState)
             {
                 switch(requestAccessResult)
                 {
                     case SUCCESS:
                         ctrlPcc = result;
-                        tv_status.setText(result.getDeviceName() + ": " + initialDeviceState);
+                        tv_status.setText(result.getDeviceName() + ": " + initialDeviceState.toString());
                         tv_deviceNumber.setText(String.valueOf(ctrlPcc.getAntDeviceNumber()));
-                        updateTimer.schedule(new SimulateDataTask(), 2000, 2000); // Start generating simulated data
+                        updateTimer.schedule(new SimulateDataTask(), 2000, 2000); // Start generating data
                         break;
                     case CHANNEL_NOT_AVAILABLE:
-                        Toast.makeText(Activity_AudioControllableDeviceSampler.this, "Channel Not Available", Toast.LENGTH_SHORT).show();
-                        tv_status.setText("Error. Do Menu->Reset.");
-                        break;
-                    case ADAPTER_NOT_DETECTED:
-                        Toast.makeText(Activity_AudioControllableDeviceSampler.this, "ANT Adapter Not Available. Built-in ANT hardware or external adapter required.", Toast.LENGTH_SHORT).show();
-                        tv_status.setText("Error. Do Menu->Reset.");
-                        break;
-                    case BAD_PARAMS:
-                        //Note: Since we compose all the params ourself, we should never see this result
-                        Toast.makeText(Activity_AudioControllableDeviceSampler.this, "Bad request parameters.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_VideoControllableDeviceSampler.this, "Channel Not Available", Toast.LENGTH_SHORT);
                         tv_status.setText("Error. Do Menu->Reset.");
                         break;
                     case OTHER_FAILURE:
-                        Toast.makeText(Activity_AudioControllableDeviceSampler.this, "RequestAccess failed. See logcat for details.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_VideoControllableDeviceSampler.this, "RequestAccess failed. See logcat for details.", Toast.LENGTH_SHORT).show();
                         tv_status.setText("Error. Do Menu->Reset.");
                         break;
                     case DEPENDENCY_NOT_INSTALLED:
                         tv_status.setText("Error. Do Menu->Reset.");
-                        AlertDialog.Builder adlgBldr = new AlertDialog.Builder(Activity_AudioControllableDeviceSampler.this);
+                        AlertDialog.Builder adlgBldr = new AlertDialog.Builder(Activity_VideoControllableDeviceSampler.this);
                         adlgBldr.setTitle("Missing Dependency");
-                        adlgBldr.setMessage("The required service\n\"" + AntPlusAudioControllableDevicePcc.getMissingDependencyName() + "\"\n was not found. You need to install the ANT+ Plugins service or you may need to update your existing version if you already have it. Do you want to launch the Play Store to get it?");
+                        adlgBldr.setMessage("The required service\n\"" + AntPlusVideoControllableDevicePcc.getMissingDependencyName() + "\"\n was not found. You need to install the ANT+ Plugins service or you may need to update your existing version if you already have it. Do you want to launch the Play Store to get it?");
                         adlgBldr.setCancelable(true);
                         adlgBldr.setPositiveButton("Go to Store", new OnClickListener()
                         {
@@ -153,10 +144,10 @@ public class Activity_AudioControllableDeviceSampler extends Activity
                             public void onClick(DialogInterface dialog, int which)
                             {
                                 Intent startStore = null;
-                                startStore = new Intent(Intent.ACTION_VIEW,Uri.parse("market://details?id=" + AntPlusAudioControllableDevicePcc.getMissingDependencyPackageName()));
+                                startStore = new Intent(Intent.ACTION_VIEW,Uri.parse("market://details?id=" + AntPlusVideoControllableDevicePcc.getMissingDependencyPackageName()));
                                 startStore.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                                Activity_AudioControllableDeviceSampler.this.startActivity(startStore);
+                                Activity_VideoControllableDeviceSampler.this.startActivity(startStore);
                             }
                         });
                         adlgBldr.setNegativeButton("Cancel", new OnClickListener()
@@ -175,13 +166,13 @@ public class Activity_AudioControllableDeviceSampler extends Activity
                         tv_status.setText("Cancelled. Do Menu->Reset.");
                         break;
                     case UNRECOGNIZED:
-                        Toast.makeText(Activity_AudioControllableDeviceSampler.this,
+                        Toast.makeText(Activity_VideoControllableDeviceSampler.this,
                             "Failed: UNRECOGNIZED. PluginLib Upgrade Required?",
                             Toast.LENGTH_SHORT).show();
                         tv_status.setText("Error. Do Menu->Reset.");
                         break;
                     default:
-                        Toast.makeText(Activity_AudioControllableDeviceSampler.this, "Unrecognized result: " + requestAccessResult, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_VideoControllableDeviceSampler.this, "Unrecognized result: " + requestAccessResult, Toast.LENGTH_SHORT).show();
                         tv_status.setText("Error. Do Menu->Reset.");
                         break;
                 }
@@ -206,16 +197,15 @@ public class Activity_AudioControllableDeviceSampler extends Activity
 
                 }
             },
-            new IAudioCommandReceiver()
+            new IVideoCommandReceiver()
             {
 
                 @Override
-                public CommandStatus onNewAudioCommand(final long estTimestamp, final EnumSet<EventFlag> eventFlags, final int serialNumber,
+                public CommandStatus onNewVideoCommand(final long estTimestamp, final EnumSet<EventFlag> eventFlags, final int serialNumber,
                     final int sequenceNumber, final AudioVideoCommandNumber commandNumber, final int commandData)
                 {
                     runOnUiThread(new Runnable()
                     {
-
                         @Override
                         public void run()
                         {
@@ -228,6 +218,7 @@ public class Activity_AudioControllableDeviceSampler extends Activity
                     });
                     return CommandStatus.PASS;
                 }
+
             },
             capabilities, DeviceNumber);
     }
@@ -240,7 +231,11 @@ public class Activity_AudioControllableDeviceSampler extends Activity
             updateTimer.cancel();
             updateTimer = null;
         }
-        releaseHandle.close();
+        if(releaseHandle != null)
+        {
+            releaseHandle.close();
+            releaseHandle = null;
+        }
         super.onDestroy();
     }
 
@@ -269,12 +264,12 @@ public class Activity_AudioControllableDeviceSampler extends Activity
     // Very rudimentary simulation just for testing, cycle through values every 2 seconds
     class SimulateDataTask extends TimerTask
     {
-        int totalTrackTime = 248; // 4:08 min
-        int currentTime = 0;
         int currentVolume = 0;
-        AudioDeviceState deviceState = AudioDeviceState.OFF;
-        AudioRepeatState repeatState = AudioRepeatState.OFF_UNSUPPORTED;
-        AudioShuffleState shuffleState = AudioShuffleState.OFF_UNSUPPORTED;
+        boolean muted = false;
+        int timeRemaining = 10800; // 3 hours of recording time left
+        int currentTime = 0;
+        VideoDeviceState deviceState = VideoDeviceState.OFF;
+
 
         @Override
         public void run()
@@ -282,13 +277,19 @@ public class Activity_AudioControllableDeviceSampler extends Activity
             // For testing purposes, this just generates random values for volume & track time
             if(ctrlPcc != null)
             {
-                ctrlPcc.updateAudioStatus(currentVolume, totalTrackTime, currentTime, deviceState, repeatState, shuffleState);
+                ctrlPcc.updateVideoStatus(currentVolume, muted, timeRemaining, currentTime, deviceState);
 
-                // Cycle current track time from 0 to total track time
-                if(currentTime == totalTrackTime)
+                // Increase the time Progressed and decrease the time remaining; cycle through
+                if(timeRemaining == 0)
+                {
                     currentTime = 0;
+                    timeRemaining = 10800;
+                }
                 else
+                {
                     currentTime += 2;
+                    timeRemaining -= 2;
+                }
 
                 // Cycle volume from 0 - 100
                 if(currentVolume == 100)
@@ -297,28 +298,12 @@ public class Activity_AudioControllableDeviceSampler extends Activity
                     currentVolume++;
 
                 // Cycle through the states
-                if(deviceState == AudioDeviceState.REWIND)
-                    deviceState = AudioDeviceState.OFF;
+                if(deviceState == VideoDeviceState.RECORD)
+                    deviceState = VideoDeviceState.OFF;
                 else
                 {
                     int tempState = deviceState.getIntValue();
-                    deviceState = AudioDeviceState.getValueFromInt(++tempState);
-                }
-
-                if(repeatState == AudioRepeatState.CUSTOM)
-                    repeatState = AudioRepeatState.OFF_UNSUPPORTED;
-                else
-                {
-                    int tempState = repeatState.getIntValue();
-                    repeatState = AudioRepeatState.getValueFromInt(++tempState);
-                }
-
-                if(shuffleState == AudioShuffleState.CUSTOM)
-                    shuffleState = AudioShuffleState.OFF_UNSUPPORTED;
-                else
-                {
-                    int tempState = shuffleState.getIntValue();
-                    shuffleState = AudioShuffleState.getValueFromInt(++tempState);
+                    deviceState = VideoDeviceState.getValueFromInt(++tempState);
                 }
             }
         }

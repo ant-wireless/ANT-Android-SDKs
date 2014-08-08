@@ -27,6 +27,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dsi.ant.antplus.pluginsampler.bloodpressure.Activity_BloodPressureSampler;
+import com.dsi.ant.antplus.pluginsampler.controls.Activity_AudioControllableDeviceSampler;
+import com.dsi.ant.antplus.pluginsampler.controls.Activity_AudioRemoteControlSampler;
+import com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericControllableDeviceSampler;
+import com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericRemoteControlSampler;
+import com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoControllableDeviceSampler;
+import com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoRemoteControlSampler;
 import com.dsi.ant.antplus.pluginsampler.fitnessequipment.Dialog_ConfigSettings;
 import com.dsi.ant.antplus.pluginsampler.geocache.Activity_GeoScanList;
 import com.dsi.ant.antplus.pluginsampler.heartrate.Activity_AsyncScanHeartRateSampler;
@@ -78,8 +84,11 @@ public class Activity_Dashboard extends FragmentActivity
         menuItems.add(new HashMap<String,String>(){{put("title","Environment Display");put("desc","Receive from Tempe sensors");}});
         menuItems.add(new HashMap<String,String>(){{put("title","Geocache Utility");put("desc","Read and program Geocache sensors");}});
         menuItems.add(new HashMap<String,String>(){{put("title","Audio Controllable Device");put("desc","Transmit audio player status and receive commands from remote control");}});
+        menuItems.add(new HashMap<String,String>(){{put("title","Audio Remote Control");put("desc","Transmit audio player commands and receive status from audio controllable devices");}});
         menuItems.add(new HashMap<String,String>(){{put("title","Video Controllable Device");put("desc","Transmit video player status and receive commands from remote control");}});
+        menuItems.add(new HashMap<String,String>(){{put("title","Video Remote Control");put("desc","Transmit video player commands and receive status from video controllable devices");}});
         menuItems.add(new HashMap<String,String>(){{put("title","Generic Controllable Device");put("desc","Receive generic commands from remote control");}});
+        menuItems.add(new HashMap<String,String>(){{put("title","Generic Remote Control");put("desc","Transmit generic commands to a generic controllable device");}});
         menuItems.add(new HashMap<String,String>(){{put("title","Async Scan Demo");put("desc","Connect to HRM sensors using the asynchronous scan method");}});
         menuItems.add(new HashMap<String,String>(){{put("title","Multi Device Search");put("desc","Search for multiple device types on the same channel");}});
         menuItems.add(new HashMap<String,String>(){{put("title","Launch ANT+ Plugin Manager");put("desc","Controls device database and default settings");}});
@@ -170,12 +179,27 @@ public class Activity_Dashboard extends FragmentActivity
         }
         else if(position == j++)
         {
+            Intent i = new Intent(this, Activity_AudioRemoteControlSampler.class);
+            startActivity(i);
+        }
+        else if(position == j++)
+        {
             Intent i = new Intent(this, Activity_VideoControllableDeviceSampler.class);
             startActivity(i);
         }
         else if(position == j++)
         {
+            Intent i = new Intent(this, Activity_VideoRemoteControlSampler.class);
+            startActivity(i);
+        }
+        else if(position == j++)
+        {
             Intent i = new Intent(this, Activity_GenericControllableDeviceSampler.class);
+            startActivity(i);
+        }
+        else if(position == j++)
+        {
+            Intent i = new Intent(this, Activity_GenericRemoteControlSampler.class);
             startActivity(i);
         }
         else if(position == j++)

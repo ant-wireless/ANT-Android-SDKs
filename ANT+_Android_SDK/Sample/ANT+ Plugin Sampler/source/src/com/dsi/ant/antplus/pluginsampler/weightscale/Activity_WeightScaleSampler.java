@@ -117,7 +117,8 @@ public class Activity_WeightScaleSampler extends FragmentActivity
     TextView tv_manufacturerID;
     TextView tv_modelNumber;
 
-    TextView tv_softwareRevision;
+    TextView tv_mainSoftwareRevision;
+    TextView tv_supplementalSoftwareRevision;
     TextView tv_serialNumber;
 
     IPluginAccessResultReceiver<AntPlusWeightScalePcc> mResultReceiver = new IPluginAccessResultReceiver<AntPlusWeightScalePcc>()
@@ -252,11 +253,10 @@ public class Activity_WeightScaleSampler extends FragmentActivity
 
             wgtPcc.subscribeProductInformationEvent(new IProductInformationReceiver()
             {
-
                 @Override
                 public void onNewProductInformation(final long estTimestamp,
-                    final EnumSet<EventFlag> eventFlags, final int softwareRevision,
-                    final long serialNumber)
+                    final EnumSet<EventFlag> eventFlags, final int mainSoftwareRevision,
+                    final int supplementalSoftwareRevision, final long serialNumber)
                 {
                     runOnUiThread(new Runnable()
                     {
@@ -265,7 +265,20 @@ public class Activity_WeightScaleSampler extends FragmentActivity
                         {
                             tv_estTimestamp.setText(String.valueOf(estTimestamp));
 
-                            tv_softwareRevision.setText(String.valueOf(softwareRevision));
+                            tv_mainSoftwareRevision.setText(String
+                                .valueOf(mainSoftwareRevision));
+
+                            if (supplementalSoftwareRevision == -2)
+                                // Plugin Service installed does not support supplemental revision
+                                tv_supplementalSoftwareRevision.setText("?");
+                            else if (supplementalSoftwareRevision == 0xFF)
+                                // Invalid supplemental revision
+                                tv_supplementalSoftwareRevision.setText("");
+                            else
+                                // Valid supplemental revision
+                                tv_supplementalSoftwareRevision.setText(", " + String
+                                    .valueOf(supplementalSoftwareRevision));
+
                             tv_serialNumber.setText(String.valueOf(serialNumber));
                         }
                     });
@@ -362,7 +375,8 @@ public class Activity_WeightScaleSampler extends FragmentActivity
         tv_manufacturerID = (TextView)findViewById(R.id.textView_ManufacturerID);
         tv_modelNumber = (TextView)findViewById(R.id.textView_ModelNumber);
 
-        tv_softwareRevision = (TextView)findViewById(R.id.textView_SoftwareRevision);
+        tv_mainSoftwareRevision = (TextView)findViewById(R.id.textView_MainSoftwareRevision);
+        tv_supplementalSoftwareRevision = (TextView)findViewById(R.id.textView_SupplementalSoftwareRevision);
         tv_serialNumber = (TextView)findViewById(R.id.textView_SerialNumber);
 
         userProfile.age = 32;
@@ -823,7 +837,8 @@ public class Activity_WeightScaleSampler extends FragmentActivity
         tv_manufacturerID.setText("---");
         tv_modelNumber.setText("---");
 
-        tv_softwareRevision.setText("---");
+        tv_mainSoftwareRevision.setText("---");
+        tv_supplementalSoftwareRevision.setText("");
         tv_serialNumber.setText("---");
 
         Intent intent = getIntent();

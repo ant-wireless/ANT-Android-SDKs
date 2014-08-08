@@ -1,4 +1,4 @@
-# Android ANT+ SDK v.P.B1 RC1 - 20 June 2014
+# Android ANT+ SDK v.P.B2 - 8 Aug 2014
 This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to use ANT wireless technology freely outside of the defined ANT+ profiles, you must use the ANT Android SDK instead.
@@ -26,18 +26,56 @@ This SDK is available from:
 ## Contents
 * Creating ANT+ Android Applications
 * API
-  * PluginLib 3.0.0 RC1 (.jar and Javadoc)
-  * FIT 11.0.0 (.jar)
+  * PluginLib 3.1.0 (.jar and Javadoc)
+  * FIT 12.00 (.jar)
 * Services
-  * ANT+ Plugins Service 3.0.0 RC1 (.apk)
+  * ANT+ Plugins Service 3.1.0 (.apk)
   * Plugin Manager Launcher 1.1.0 (.apk)
 * Sample Applications
-  * Plugin Sampler 3.0.0 RC1(.apk and source)
+  * Plugin Sampler 3.1.0(.apk and source)
   * ANT+ Demo 3.1.0 (.apk)
-  * Heart Rate Grapher 2.1.0 (.apk)
+  * Heart Rate Grapher 3.0.0 (.apk)
 
 
 ## Changelog
+
+<u>v.P.B2 - 8 Aug 2014</u>
+---------------------------------------------
+> Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.1.0
+> -----------------------------------------------------------
+> * Added Remote Control profile (Audio, Video, and Generic support)
+> * Added support for requesting common data pages
+> * Added support for supplementary software version on common manufacturer info page
+> * Moved controllable device PCC to a different package to avoid confusion with the actual PCCs(Will require fixing imports and references in old projects)
+> * Changed Bike Power and Trainer commands to send result failed response instead of throwing exception
+> * Updated to FitLib 12.00
+> * Updated to AntLib 4.7.0
+> * Updated some Javadoc to be more clear
+> * Removed blood pressure requestDownloadAllHistory (replaced by DownloadMeasurements)
+> * Fixed weight scale crashing with certain brands of weight scale
+> * Fixed a ConcurrentModificationException occurring when using multiple async scan controllers
+> * Fixed a Bike Power divide-by-zero error
+> * Fixed several causes of sending messages to dead handler logs
+> * Fixed missing dependency info to be consistent and more user friendly
+> * Fixed async scan controllers to not log known result codes as unknown
+> * Fixed BikePower logging about subscribing and unsubscribing to events
+> * Fixed Request Access UI Activity from displaying if the pcc release handle was already closed
+>
+>
+> Plugin Sampler - v.3.1.0
+> ------------------------------
+> * Update to new pluginLib
+> * Add Remote Control support
+> * Fixed crash selecting watch list item after search is closed
+> * Fixed async scan demo leaking a channel in some cases
+>
+>
+> Heart Rate Grapher - v.3.0.0
+> -----------------------------
+> * New modern UI
+> * Added keep-screen-on feature
+> * Now detects HR strap connection issues
+
 
 <u>v.P.B1 RC1 - 20 June 2014</u>
 ---------------------------------------------

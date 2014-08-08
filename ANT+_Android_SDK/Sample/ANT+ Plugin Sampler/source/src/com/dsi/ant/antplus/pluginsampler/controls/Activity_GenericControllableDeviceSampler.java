@@ -7,7 +7,9 @@ Copyright (c) Dynastream Innovations Inc. 2013
 All rights reserved.
  */
 
-package com.dsi.ant.antplus.pluginsampler;
+package com.dsi.ant.antplus.pluginsampler.controls;
+
+import java.util.EnumSet;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,6 +23,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dsi.ant.antplus.pluginsampler.R;
 import com.dsi.ant.plugins.antplus.pcc.controls.AntPlusGenericControllableDevicePcc;
 import com.dsi.ant.plugins.antplus.pcc.controls.AntPlusGenericControllableDevicePcc.IGenericCommandReceiver;
 import com.dsi.ant.plugins.antplus.pcc.controls.defines.CommandStatus;
@@ -32,15 +35,13 @@ import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IDeviceStateChangeReceiv
 import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IPluginAccessResultReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.PccReleaseHandle;
 
-import java.util.EnumSet;
-
 /**
  * Connects to Controls Plugin, using the Generic mode, and receives generic commands from a remote
  */
 public class Activity_GenericControllableDeviceSampler extends Activity
 {
     AntPlusGenericControllableDevicePcc ctrlPcc = null;
-    PccReleaseHandle<AntPlusGenericControllableDevicePcc> releaseHandle = null;
+    PccReleaseHandle<AntPlusGenericControllableDevicePcc> releaseHandle;
 
     int DeviceNumber = 0; // Set to Zero for the pluging to automatically generate the ID
 
@@ -60,7 +61,7 @@ public class Activity_GenericControllableDeviceSampler extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_controls);
+        setContentView(R.layout.activity_controllable_device);
 
         tv_status = (TextView)findViewById(R.id.textView_Status);
         tv_deviceNumber = (TextView)findViewById(R.id.textView_DeviceNumber);
@@ -82,6 +83,7 @@ public class Activity_GenericControllableDeviceSampler extends Activity
         if(releaseHandle != null)
         {
             releaseHandle.close();
+            releaseHandle = null;
         }
 
         tv_status.setText("Connecting...");
@@ -110,15 +112,6 @@ public class Activity_GenericControllableDeviceSampler extends Activity
                         break;
                     case CHANNEL_NOT_AVAILABLE:
                         Toast.makeText(Activity_GenericControllableDeviceSampler.this, "Channel Not Available", Toast.LENGTH_SHORT).show();
-                        tv_status.setText("Error. Do Menu->Reset.");
-                        break;
-                    case ADAPTER_NOT_DETECTED:
-                        Toast.makeText(Activity_GenericControllableDeviceSampler.this, "ANT Adapter Not Available. Built-in ANT hardware or external adapter required.", Toast.LENGTH_SHORT).show();
-                        tv_status.setText("Error. Do Menu->Reset.");
-                        break;
-                    case BAD_PARAMS:
-                        //Note: Since we compose all the params ourself, we should never see this result
-                        Toast.makeText(Activity_GenericControllableDeviceSampler.this, "Bad request parameters.", Toast.LENGTH_SHORT).show();
                         tv_status.setText("Error. Do Menu->Reset.");
                         break;
                     case OTHER_FAILURE:
@@ -207,10 +200,12 @@ public class Activity_GenericControllableDeviceSampler extends Activity
                             tv_remoteSerialNumber.setText(String.valueOf(serialNumber));
                             tv_remoteManufacturerID.setText(String.valueOf(manufacturerID));
 
-                            if(commandNumber != GenericCommandNumber.UNRECOGNIZED)
-                                tv_commandNumber.setText(commandNumber.toString());
+                            GenericCommandNumber tempCommand = commandNumber;
+
+                            if(tempCommand != GenericCommandNumber.UNRECOGNIZED)
+                                tv_commandNumber.setText(tempCommand.toString());
                             else
-                                tv_commandNumber.setText(Integer.toString(commandNumber.getIntValue()));
+                                tv_commandNumber.setText(commandNumber.toString());
                         }
                     });
                     return CommandStatus.PASS;
@@ -223,7 +218,11 @@ public class Activity_GenericControllableDeviceSampler extends Activity
     @Override
     protected void onDestroy()
     {
-        releaseHandle.close();
+        if(releaseHandle != null)
+        {
+            releaseHandle.close();
+            releaseHandle = null;
+        }
         super.onDestroy();
     }
 

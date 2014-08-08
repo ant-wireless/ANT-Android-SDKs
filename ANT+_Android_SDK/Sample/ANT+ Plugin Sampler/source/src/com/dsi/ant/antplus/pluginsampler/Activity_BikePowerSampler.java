@@ -48,7 +48,6 @@ import com.dsi.ant.plugins.antplus.pcc.AntPlusBikePowerPcc.IRawCrankTorqueDataRe
 import com.dsi.ant.plugins.antplus.pcc.AntPlusBikePowerPcc.IRawCtfDataReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusBikePowerPcc.IRawPowerOnlyDataReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusBikePowerPcc.IRawWheelTorqueDataReceiver;
-import com.dsi.ant.plugins.antplus.pcc.AntPlusBikePowerPcc.IRequestFinishedReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusBikePowerPcc.ITorqueEffectivenessReceiver;
 import com.dsi.ant.plugins.antplus.pcc.defines.BatteryStatus;
 import com.dsi.ant.plugins.antplus.pcc.defines.DeviceState;
@@ -60,6 +59,7 @@ import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IPluginAccessResultRecei
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IBatteryStatusReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IManufacturerIdentificationReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IProductInformationReceiver;
+import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IRequestFinishedReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.MultiDeviceSearch.MultiDeviceSearchResult;
 import com.dsi.ant.plugins.antplus.pccbase.PccReleaseHandle;
 
@@ -139,7 +139,8 @@ public class Activity_BikePowerSampler extends Activity
     TextView textView_modelNumber;
 
     TextView textView_hardwareRevision;
-    TextView textView_softwareRevision;
+    TextView textView_mainSoftwareRevision;
+    TextView textView_supplementalSoftwareRevision;
 
     TextView textView_CumulativeOperatingTime;
     TextView textView_BatteryVoltage;
@@ -1001,8 +1002,8 @@ public class Activity_BikePowerSampler extends Activity
             {
                 @Override
                 public void onNewProductInformation(final long estTimestamp,
-                    final EnumSet<EventFlag> eventFlags, final int softwareRevision,
-                    final long serialNumber)
+                    final EnumSet<EventFlag> eventFlags, final int mainSoftwareRevision,
+                    final int supplementalSoftwareRevision, final long serialNumber)
                 {
                     runOnUiThread(new Runnable()
                     {
@@ -1011,8 +1012,20 @@ public class Activity_BikePowerSampler extends Activity
                         {
                             textView_EstTimestamp.setText(String.valueOf(estTimestamp));
 
-                            textView_softwareRevision.setText(String
-                                .valueOf(softwareRevision));
+                            textView_mainSoftwareRevision.setText(String
+                                .valueOf(mainSoftwareRevision));
+
+                            if (supplementalSoftwareRevision == -2)
+                                // Plugin Service installed does not support supplemental revision
+                                textView_supplementalSoftwareRevision.setText("?");
+                            else if (supplementalSoftwareRevision == 0xFF)
+                                // Invalid supplemental revision
+                                textView_supplementalSoftwareRevision.setText("");
+                            else
+                                // Valid supplemental revision
+                                textView_supplementalSoftwareRevision.setText(", " + String
+                                    .valueOf(supplementalSoftwareRevision));
+
                             textView_serialNumber.setText(String.valueOf(serialNumber));
                         }
                     });
@@ -1136,7 +1149,8 @@ public class Activity_BikePowerSampler extends Activity
         textView_serialNumber = (TextView)findViewById(R.id.textView_SerialNumber);
         textView_modelNumber = (TextView)findViewById(R.id.textView_ModelNumber);
         textView_hardwareRevision = (TextView)findViewById(R.id.textView_HardwareRevision);
-        textView_softwareRevision = (TextView)findViewById(R.id.textView_SoftwareRevision);
+        textView_mainSoftwareRevision = (TextView)findViewById(R.id.textView_MainSoftwareRevision);
+        textView_supplementalSoftwareRevision = (TextView)findViewById(R.id.textView_SupplementalSoftwareRevision);
 
         button_requestManualCalibration = (Button)findViewById(R.id.button_requestManualCalibration);
         button_setAutoZero = (Button)findViewById(R.id.button_setAutoZero);
@@ -1430,7 +1444,8 @@ public class Activity_BikePowerSampler extends Activity
         textView_serialNumber.setText("---");
         textView_modelNumber.setText("---");
         textView_hardwareRevision.setText("---");
-        textView_softwareRevision.setText("---");
+        textView_mainSoftwareRevision.setText("---");
+        textView_supplementalSoftwareRevision.setText("");
 
         button_requestManualCalibration.setEnabled(false);
         button_setAutoZero.setEnabled(false);

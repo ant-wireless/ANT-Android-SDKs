@@ -93,7 +93,7 @@ public class Activity_WatchScanList extends FragmentActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int pos, long id)
             {
-                if(!bDevicesInList)
+                if(!bDevicesInList || watchPcc == null)
                     return;
 
                 final CharSequence[] downloadOptions = {"All Activities", "New Activities", "Wait For New Activities"};

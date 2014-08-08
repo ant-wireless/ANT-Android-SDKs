@@ -1038,10 +1038,17 @@ All rights reserved.
                     android:text="SoftwareRevision:" />
 
                 <TextView
-                    android:id="@+id/textView_SoftwareRevision"
+                    android:id="@+id/textView_SupplementalSoftwareRevision"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/textView_MainSoftwareRevision"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/textView_SupplementalSoftwareRevision"
                     android:text="---" />
             </RelativeLayout>
 

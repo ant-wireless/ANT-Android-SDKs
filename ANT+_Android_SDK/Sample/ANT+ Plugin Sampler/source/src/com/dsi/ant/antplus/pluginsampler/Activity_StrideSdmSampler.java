@@ -82,7 +82,8 @@ public class Activity_StrideSdmSampler extends Activity
     TextView tv_modelNumber;
 
     TextView tv_hardwareRevision;
-    TextView tv_softwareRevision;
+    TextView tv_mainSoftwareRevision;
+    TextView tv_supplementalSoftwareRevision;
 
     TextView tv_manufacturerSpecificData;
 
@@ -376,8 +377,8 @@ public class Activity_StrideSdmSampler extends Activity
             {
                 @Override
                 public void onNewProductInformation(final long estTimestamp,
-                    final EnumSet<EventFlag> eventFlags, final int softwareRevision,
-                    final long serialNumber)
+                    final EnumSet<EventFlag> eventFlags, final int mainSoftwareRevision,
+                    final int supplementalSoftwareRevision, final long serialNumber)
                 {
                     runOnUiThread(new Runnable()
                     {
@@ -386,7 +387,20 @@ public class Activity_StrideSdmSampler extends Activity
                         {
                             tv_estTimestamp.setText(String.valueOf(estTimestamp));
 
-                            tv_softwareRevision.setText(String.valueOf(softwareRevision));
+                            tv_mainSoftwareRevision.setText(String
+                                .valueOf(mainSoftwareRevision));
+
+                            if (supplementalSoftwareRevision == -2)
+                                // Plugin Service installed does not support supplemental revision
+                                tv_supplementalSoftwareRevision.setText("?");
+                            else if (supplementalSoftwareRevision == 0xFF)
+                                // Invalid supplemental revision
+                                tv_supplementalSoftwareRevision.setText("");
+                            else
+                                // Valid supplemental revision
+                                tv_supplementalSoftwareRevision.setText(", " + String
+                                    .valueOf(supplementalSoftwareRevision));
+
                             tv_serialNumber.setText(String.valueOf(serialNumber));
                         }
                     });
@@ -469,7 +483,8 @@ public class Activity_StrideSdmSampler extends Activity
         tv_modelNumber = (TextView)findViewById(R.id.textView_ModelNumber);
 
         tv_hardwareRevision = (TextView)findViewById(R.id.textView_HardwareRevision);
-        tv_softwareRevision = (TextView)findViewById(R.id.textView_SoftwareRevision);
+        tv_mainSoftwareRevision = (TextView)findViewById(R.id.textView_MainSoftwareRevision);
+        tv_supplementalSoftwareRevision = (TextView)findViewById(R.id.textView_SupplementalSoftwareRevision);
 
         tv_manufacturerSpecificData = (TextView)findViewById(R.id.textView_ManufacturerSpecificData);
 
@@ -509,7 +524,8 @@ public class Activity_StrideSdmSampler extends Activity
         tv_modelNumber.setText("---");
 
         tv_hardwareRevision.setText("---");
-        tv_softwareRevision.setText("---");
+        tv_mainSoftwareRevision.setText("---");
+        tv_supplementalSoftwareRevision.setText("");
 
         Intent intent = getIntent();
         if (intent.hasExtra(Activity_MultiDeviceSearchSampler.EXTRA_KEY_MULTIDEVICE_SEARCH_RESULT))

@@ -44,10 +44,13 @@ import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.Settings;
 import com.dsi.ant.plugins.antplus.pcc.defines.DeviceState;
 import com.dsi.ant.plugins.antplus.pcc.defines.EventFlag;
 import com.dsi.ant.plugins.antplus.pcc.defines.RequestAccessResult;
+import com.dsi.ant.plugins.antplus.pcc.defines.RequestStatus;
 import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IDeviceStateChangeReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IPluginAccessResultReceiver;
+import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.CommonDataPage;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IManufacturerIdentificationReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IProductInformationReceiver;
+import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IRequestFinishedReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.PccReleaseHandle;
 
 import java.io.ByteArrayOutputStream;
@@ -159,7 +162,8 @@ public class Activity_FitnessEquipmentSampler extends Activity
     TextView tv_manufacturerID;
     TextView tv_modelNumber;
 
-    TextView tv_softwareRevision;
+    TextView tv_mainSoftwareRevision;
+    TextView tv_supplementalSoftwareRevision;
     TextView tv_serialNumber;
 
     TextView tv_deviceNumber;
@@ -178,6 +182,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
     Button button_requestTargetPower;
     Button button_requestWindResistance;
     Button button_requestTrackResistance;
+    Button button_requestCommonDataPage;
 
     boolean subscriptionsDone = false;
     Bundle b;
@@ -283,7 +288,8 @@ public class Activity_FitnessEquipmentSampler extends Activity
         tv_manufacturerID = (TextView)findViewById(R.id.textView_ManufacturerID);
         tv_modelNumber = (TextView)findViewById(R.id.textView_ModelNumber);
 
-        tv_softwareRevision = (TextView)findViewById(R.id.textView_SoftwareRevision);
+        tv_mainSoftwareRevision = (TextView)findViewById(R.id.textView_MainSoftwareRevision);
+        tv_supplementalSoftwareRevision = (TextView)findViewById(R.id.textView_SupplementalSoftwareRevision);
         tv_serialNumber = (TextView)findViewById(R.id.textView_SerialNumber);
 
         button_requestZeroOffsetCalibration = (Button)findViewById(R.id.button_requestZeroOffsetCalibration);
@@ -300,6 +306,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
         button_requestTargetPower = (Button)findViewById(R.id.button_requestTargetPower);
         button_requestWindResistance = (Button)findViewById(R.id.button_requestWindResistance);
         button_requestTrackResistance = (Button)findViewById(R.id.button_requestTrackResistance);
+        button_requestCommonDataPage = (Button)findViewById(R.id.button_requestCommonDataPage);
 
         b = getIntent().getExtras();
         if(b != null)
@@ -338,6 +345,36 @@ public class Activity_FitnessEquipmentSampler extends Activity
                 }
             }
         }
+
+    final IRequestFinishedReceiver requestFinishedReceiver = new IRequestFinishedReceiver()
+    {
+        @Override
+        public void onNewRequestFinished(final RequestStatus requestStatus)
+        {
+            runOnUiThread(
+                new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        switch(requestStatus)
+                        {
+                            case SUCCESS:
+                                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Successfully Sent", Toast.LENGTH_SHORT).show();
+                                break;
+                            case FAIL_PLUGINS_SERVICE_VERSION:
+                                Toast.makeText(Activity_FitnessEquipmentSampler.this,
+                                   "Plugin Service Upgrade Required?",
+                                    Toast.LENGTH_SHORT).show();
+                                break;
+                            default:
+                                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Failed to be Sent", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                    }
+                });
+            }
+        };
 
         button_requestZeroOffsetCalibration.setOnClickListener(new View.OnClickListener()
         {
@@ -467,6 +504,40 @@ public class Activity_FitnessEquipmentSampler extends Activity
             }
         });
 
+        button_requestCommonDataPage.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // Create a String array of names from the enum
+                final CommonDataPage[] commonDataPages = CommonDataPage.values();
+                String[] names = new String[commonDataPages.length];
+
+                for(int i = 0; i < names.length; i++)
+                {
+                    names[i] = commonDataPages[i].name();
+                }
+
+                // Build the list alert dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_FitnessEquipmentSampler.this);
+                builder.setTitle("Pick a common data page")
+                .setItems(names, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        CommonDataPage selectedCommonDataPage = commonDataPages[which];
+                        boolean submitted = fePcc.requestCommonDataPage(selectedCommonDataPage, requestFinishedReceiver);
+
+                        if(!submitted)
+                            Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         resetPcc();
     }
 
@@ -522,7 +593,8 @@ public class Activity_FitnessEquipmentSampler extends Activity
         tv_manufacturerID.setText("---");
         tv_modelNumber.setText("---");
 
-        tv_softwareRevision.setText("---");
+        tv_mainSoftwareRevision.setText("---");
+        tv_supplementalSoftwareRevision.setText("");
         tv_serialNumber.setText("---");
 
         final IPluginAccessResultReceiver<AntPlusFitnessEquipmentPcc> mPluginAccessResultReceiver =
@@ -781,10 +853,10 @@ public class Activity_FitnessEquipmentSampler extends Activity
 
                     fePcc.subscribeProductInformationEvent(new IProductInformationReceiver()
                     {
-
                         @Override
-                        public void onNewProductInformation(final long estTimestamp, final EnumSet<EventFlag> eventFlags, final int softwareRevision,
-                            final long serialNumber)
+                        public void onNewProductInformation(final long estTimestamp,
+                            final EnumSet<EventFlag> eventFlags, final int mainSoftwareRevision,
+                            final int supplementalSoftwareRevision, final long serialNumber)
                         {
                             runOnUiThread(new Runnable()
                             {
@@ -793,7 +865,20 @@ public class Activity_FitnessEquipmentSampler extends Activity
                                 {
                                     tv_estTimestamp.setText(String.valueOf(estTimestamp));
 
-                                    tv_softwareRevision.setText(String.valueOf(softwareRevision));
+                                    tv_mainSoftwareRevision.setText(String
+                                        .valueOf(mainSoftwareRevision));
+
+                                    if (supplementalSoftwareRevision == -2)
+                                        // Plugin Service installed does not support supplemental revision
+                                        tv_supplementalSoftwareRevision.setText("?");
+                                    else if (supplementalSoftwareRevision == 0xFF)
+                                        // Invalid supplemental revision
+                                        tv_supplementalSoftwareRevision.setText("");
+                                    else
+                                        // Valid supplemental revision
+                                        tv_supplementalSoftwareRevision.setText(", " + String
+                                            .valueOf(supplementalSoftwareRevision));
+
                                     tv_serialNumber.setText(String.valueOf(serialNumber));
                                 }
                             });
