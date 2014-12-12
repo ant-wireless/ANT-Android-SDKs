@@ -1,4 +1,4 @@
-# Android ANT SDK v.C.B3 - 6 Aug 2014
+# Android ANT SDK v.C.B4 **Release Candidate 3** - 6 Aug 2014
 This software development kit provides the resources needed to develop an Android application which uses ANT technology to communicate wirelessly between ANT enabled devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to connect to ANT+ devices on the ANT+ network, you must use the ANT+ Android SDK instead.
@@ -10,9 +10,11 @@ This SDK is available from:
 
 
 ## Quick Start Guide
+<i> Note: Refer to the "Creating ANT Android Applications" (.pdf) file for more detailed info </i>
+
 1. Ensure ANT Radio Service (ARS) is installed on device
 2. Reference ANTLib library in your application project
-3. Refer to Acquire Channels Sample to see how to:
+3. Refer to the Acquire Channels Sample to see how to:
     1. Bind to ARS
     2. Acquire channels
     3. Configure and open channels
@@ -21,12 +23,14 @@ This SDK is available from:
 
 
 ## Contents
+<i> Note: Each top-level folder has a readme file which contains descriptions of the applications and tools and their intended purpose </i>
+
 * Creating ANT Android Applications (.pdf)
 * API
-  * ANT Lib 4.7.0 (.jar and Javadoc)
+  * ANT Lib 4.9.0 **Release Candidate 3** (.jar and Javadoc)
 * Services
-  * ANT Radio Service 4.7.0 (.apk)
-  * ANT USB Service 1.3.0 (.apk)
+  * ANT Radio Service 4.9.0 **Release Candidate 3** (.apk)
+  * ANT USB Service 1.4.0 **Release Candidate 1** (.apk)
 * Sample Applications
   * Acquire Channels Sample 1.1.0 (.apk and source)
   * Background Scan Sample 1.0.0 (.apk and source)
@@ -42,6 +46,39 @@ If you have any questions about developing ANT applications or need help visit t
 
 Android ANT SDK Changelog
 ==========================================
+
+v.C.B4 **Release Candidate 1** - 12 Dec 2014
+-----------------------------------------
+> ANT Radio Service and ANTLib - v.4.9.0 **Release Candidate 3**
+> -----------------------------------------------------
+> * Fix Android 5.0 intent compatibility (*If you compile your app targeting API >=21 you must use ANTLib >=4.9.0 or you will see 'java.lang.IllegalArgumentException: Service Intent must be explicit'*)
+> * Fix Android 5.0 permissions compatibility (i.e. Play Store error 505)
+> * Add support for obtaining information about attached ANT adapters and their capabilities
+> * Add support to obtain a channel from a specific ANT adapter
+> * Add support for search priority control
+> * Add support to use multiple private networks simultaneously on adapters that support more network slots
+> * Add ANT_NOT_ENABLED channel not available reason for when phones start providing ANT as a system setting
+> * Add proper equals() support to ChannelID class to easily compare Channel IDs
+> * Fix a rare deadlock when releasing channels
+> * Fix an IllegalArgumentException when intitializing the ANT USB Service
+> * Fix a possible deadlock when shutting down with an active burst
+> * Fix a thread leak when shutting down when a channel is being cleaned up
+> * Fix global ref table resource leak when releasing channels
+> * Fix NEW_CHANNELS_AVAILABLE intent to be sent out everytime a new adapter is attached (i.e. when a USB stick is inserted)
+> * Fix hang when calling burst on a closed channel
+> * Fix NullPointerException occuring when USB Service is force stopped
+> * Cleaned up some logging and javadoc
+> * Add support for some new private network keys
+>
+>
+> ANT USB Service - v.1.4.0 **Release Candidate 1**
+> -----------------------------------------------------
+> * Fix Android 5.0 permissions compatibility (i.e. Play Store error 505)
+> * Change service icon to grey to show up better on both dark and light backgrounds
+> * Fix an ANR caused by the removal of the USB stick is removed at the same time as acknowledging the USB device permission popup
+> * Fix NullPointerException processing ANT events when the ARS is shutting down
+> * Fix multiple USB device permission popups for the same device
+> * Cleaned and fixed up some logging
 
 v.C.B3 - 6 Aug 2014
 -----------------------------------------

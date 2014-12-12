@@ -1,6 +1,7 @@
 # Android ANT API
 This ANTlib library file, when included in your application, enables you to utilize the extensive range of features provided by the Android ANT API to have your application communicate wirelessly with other ANT devices. If you are trying to connect to ANT+ devices on the ANT+ network, you must use the ANT+ PluginLib included in the ANT+ Android SDK instead.
 
+Note: To view the Javadoc information online, visit http://www.thisisant.com/developer/resources/api-documentation/
 
 ## Contents
 * ANTLib (.jar) - The ANTlib library file to include in your project
