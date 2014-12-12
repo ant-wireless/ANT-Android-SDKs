@@ -1,6 +1,6 @@
 # ANT and ANT+ Android SDKs Beta Release
 
-**Disclaimer: This SDK version is a BETA release and is for testing and development purposes. The contents are subject to change before the official release. Because of this, there are no promises of future compatibility or support for any changes made in this SDK since the last official release. If you are looking for an offical release, please check out the last official release under tag 'release/C.B3-P.B2'.
+*Disclaimer: This SDK version is a BETA release and is for testing and development purposes. The contents are subject to change before the official release. Because of this, there are no promises of future compatibility or support for any changes made in this SDK since the last official release. If you are looking for an offical release, please check out the last official release under tag 'release/C.B3-P.B2'.*
 
 The Android ANT and Android ANT+ SDKs enable developers to create unique applications that use ANT wireless communication technology to communicate between a wide array of devices over various network configurations. ANT is a proven ultra-low power wireless sensor network protocol operating in the 2.4 GHz ISM band and is an effective solution for personal and local area networks. ANT is available on many Android devices including most modern flagship phones from Samsung and Sony. Additionally, ANT can be used on other devices with USB-Host support through the use of an ANT USB stick.
 
@@ -25,16 +25,16 @@ See the README.md file in each respective SDK directory for a detailed changelog
 
 # FAQ
 **What is ANT?**
-Visit http://www.thisisant.com/developer for more information
+> Visit http://www.thisisant.com/developer for more information
 
 **What is the difference between ANT and ANT+?**
-Visit http://www.thisisant.com/developer/ant-plus/ant-antplus-defined/
+> Visit http://www.thisisant.com/developer/ant-plus/ant-antplus-defined/
 
 **Where can I get more info about ANT on Android (e.g. hardware requirements, developer instructions, licensing information)?**
-Visit http://www.thisisant.com/developer/ant/ant-in-android/ for more info
+> Visit http://www.thisisant.com/developer/ant/ant-in-android/ for more info
 
 **How do I use the ANT and ANT+ APIs?**
-Refer to the "Quick Start Guide" in the readme files of the ANT and ANT+ SDK main folders.
+> Refer to the "Quick Start Guide" in the readme files of the ANT and ANT+ SDK main folders.
 
 **Where can I get help developing my ANT applications?**
-Visit the ANT developer forums at http://www.thisisant.com/forum/ or become an ANT+ Member for direct support.
+> Visit the ANT developer forums at http://www.thisisant.com/forum/ or become an ANT+ Member for direct support.
