@@ -51,24 +51,24 @@ v.C.B4 **Release Candidate 1** - 12 Dec 2014
 -----------------------------------------
 > ANT Radio Service and ANTLib - v.4.9.0 **Release Candidate 3**
 > -----------------------------------------------------
-> * Fix Android 5.0 intent compatibility (*If you compile your app targeting API >=21 you must use ANTLib >=4.9.0 or you will see 'java.lang.IllegalArgumentException: Service Intent must be explicit'*)
-> * Fix Android 5.0 permissions compatibility (i.e. Play Store error 505)
-> * Add support for obtaining information about attached ANT adapters and their capabilities
-> * Add support to obtain a channel from a specific ANT adapter
-> * Add support for search priority control
-> * Add support to use multiple private networks simultaneously on adapters that support more network slots
-> * Add ANT_NOT_ENABLED channel not available reason for when phones start providing ANT as a system setting
-> * Add proper equals() support to ChannelID class to easily compare Channel IDs
-> * Fix a rare deadlock when releasing channels
-> * Fix an IllegalArgumentException when intitializing the ANT USB Service
-> * Fix a possible deadlock when shutting down with an active burst
-> * Fix a thread leak when shutting down when a channel is being cleaned up
-> * Fix global ref table resource leak when releasing channels
-> * Fix NEW_CHANNELS_AVAILABLE intent to be sent out everytime a new adapter is attached (i.e. when a USB stick is inserted)
-> * Fix hang when calling burst on a closed channel
-> * Fix NullPointerException occuring when USB Service is force stopped
-> * Cleaned up some logging and javadoc
-> * Add support for some new private network keys
+> * Fix Android 5.0 intent compatibility (*If you compile your app targeting API >=21 you must use ANTLib >=4.9.0 or you will see 'java.lang.IllegalArgumentException: Service Intent must be explicit'*) [ANTLib]
+> * Fix Android 5.0 permissions compatibility (i.e. Play Store error 505) [ARS]
+> * Add support for obtaining information about attached ANT adapters and their capabilities [ARS + ANTLib]
+> * Add support to obtain a channel from a specific ANT adapter [ARS + ANTLib]
+> * Add support for search priority control [ARS + ANTLib]
+> * Add support to use multiple private networks simultaneously on adapters that support more network slots [ARS]
+> * Add ANT_NOT_ENABLED channel not available reason for when phones start providing ANT as a system setting [ARS + ANTLib]
+> * Add proper equals() support to ChannelID class to easily compare Channel IDs) [ANTLib]
+> * Fix a rare deadlock when releasing channels) [ANTLib]
+> * Fix an IllegalArgumentException when intitializing the ANT USB Service [ARS]
+> * Fix a possible deadlock when shutting down with an active burst [ARS]
+> * Fix a thread leak when shutting down when a channel is being cleaned up [ARS]
+> * Fix global ref table resource leak when releasing channels [ARS]
+> * Fix NEW_CHANNELS_AVAILABLE intent to be sent out everytime a new adapter is attached (i.e. when a USB stick is inserted) [ARS]
+> * Fix hang when calling burst on a closed channel [ARS]
+> * Fix NullPointerException occuring when USB Service is force stopped [ARS]
+> * Cleaned up some logging and javadoc [ARS + ANTLib]
+> * Add support for some new private network keys [ARS]
 >
 >
 > ANT USB Service - v.1.4.0 **Release Candidate 1**
