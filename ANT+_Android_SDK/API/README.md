@@ -1,6 +1,8 @@
 # Android ANT+ API
 This PluginLib library file, when included in your application, enables you to connect to and communicate with ANT+ devices through a high level API. It abstracts most of the heavy lifting of managing connections and decoding data. For use cases that are not addressed by existing ANT+ device profiles, developers must use the AntLib included in the ANT Android SDK to communicate directly with the ANT protocol and create and connect to custom ANT networks instead.
 
+Note: To view the Javadoc information online, visit http://www.thisisant.com/developer/resources/api-documentation/
+
 <i>Note about member-only features: As a benefit of ANT+ Membership, members get exclusive access to new profiles and features for a given time period. For more information see http://www.thisisant.com/business/go-ant/levels-and-benefits/. Once your ANT+ Membership is activated, the ANT+ Member-only version of the library can be obtained from http://www.thisisant.com/developer/resources/downloads/ in the member-only release section. </i>
 
 ## Contents

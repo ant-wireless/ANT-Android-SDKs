@@ -381,6 +381,29 @@ All rights reserved.
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/viewGroup_rssi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Rssi:" />
+
+                <TextView
+                    android:id="@+id/textView_Rssi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+
         </LinearLayout>
 
         

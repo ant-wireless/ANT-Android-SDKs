@@ -18,6 +18,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import com.dsi.ant.plugins.antplus.pcc.AntPlusHeartRatePcc.RrFlag;
 import com.dsi.ant.plugins.antplus.pcc.defines.DeviceState;
 import com.dsi.ant.plugins.antplus.pcc.defines.EventFlag;
 import com.dsi.ant.plugins.antplus.pcc.defines.RequestAccessResult;
+import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IRssiReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.PccReleaseHandle;
 import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IDeviceStateChangeReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IPluginAccessResultReceiver;
@@ -54,6 +57,8 @@ public abstract class Activity_HeartRateDisplayBase extends Activity
     TextView tv_status;
 
     TextView tv_estTimestamp;
+
+    TextView tv_rssi;
 
     TextView tv_computedHeartRate;
     TextView tv_heartBeatCounter;
@@ -106,6 +111,8 @@ public abstract class Activity_HeartRateDisplayBase extends Activity
 
         tv_estTimestamp = (TextView)findViewById(R.id.textView_EstTimestamp);
 
+        tv_rssi = (TextView)findViewById(R.id.textView_Rssi);
+
         tv_computedHeartRate = (TextView)findViewById(R.id.textView_ComputedHeartRate);
         tv_heartBeatCounter = (TextView)findViewById(R.id.textView_HeartBeatCounter);
         tv_heartBeatEventTime = (TextView)findViewById(R.id.textView_HeartBeatEventTime);
@@ -131,6 +138,8 @@ public abstract class Activity_HeartRateDisplayBase extends Activity
         tv_status.setText(status);
 
         tv_estTimestamp.setText("---");
+
+        tv_rssi.setText("---");
 
         tv_computedHeartRate.setText("---");
         tv_heartBeatCounter.setText("---");
@@ -296,6 +305,19 @@ public abstract class Activity_HeartRateDisplayBase extends Activity
                 });
             }
         });
+
+        hrPcc.subscribeRssiEvent(new IRssiReceiver() {
+            @Override
+            public void onRssiData(final long estTimestamp, final EnumSet<EventFlag> evtFlags, final int rssi) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                        tv_rssi.setText(String.valueOf(rssi) + " dBm");
+                    }
+                });
+            }
+        });
     }
 
     protected IPluginAccessResultReceiver<AntPlusHeartRatePcc> base_IPluginAccessResultReceiver =
@@ -313,6 +335,7 @@ public abstract class Activity_HeartRateDisplayBase extends Activity
                     hrPcc = result;
                     tv_status.setText(result.getDeviceName() + ": " + initialDeviceState);
                     subscribeToHrEvents();
+                    if(!result.supportsRssi()) tv_rssi.setText("N/A");
                     break;
                 case CHANNEL_NOT_AVAILABLE:
                     Toast.makeText(Activity_HeartRateDisplayBase.this, "Channel Not Available", Toast.LENGTH_SHORT).show();

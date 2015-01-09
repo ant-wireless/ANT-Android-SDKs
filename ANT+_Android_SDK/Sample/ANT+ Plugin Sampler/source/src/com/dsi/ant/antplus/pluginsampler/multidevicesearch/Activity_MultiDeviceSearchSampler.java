@@ -13,12 +13,8 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,10 +33,10 @@ import com.dsi.ant.antplus.pluginsampler.bloodpressure.Activity_BloodPressureSam
 import com.dsi.ant.antplus.pluginsampler.fitnessequipment.Activity_FitnessEquipmentSampler;
 import com.dsi.ant.antplus.pluginsampler.heartrate.Activity_SearchUiHeartRateSampler;
 import com.dsi.ant.antplus.pluginsampler.weightscale.Activity_WeightScaleSampler;
-import com.dsi.ant.plugins.antplus.pcc.AntPlusHeartRatePcc;
+import com.dsi.ant.plugins.antplus.pcc.MultiDeviceSearch;
+import com.dsi.ant.plugins.antplus.pcc.MultiDeviceSearch.RssiSupport;
 import com.dsi.ant.plugins.antplus.pcc.defines.DeviceType;
 import com.dsi.ant.plugins.antplus.pcc.defines.RequestAccessResult;
-import com.dsi.ant.plugins.antplus.pccbase.MultiDeviceSearch;
 import com.dsi.ant.plugins.antplus.pccbase.MultiDeviceSearch.MultiDeviceSearchResult;
 
 /**
@@ -248,6 +244,17 @@ public class Activity_MultiDeviceSearchSampler extends Activity
             result.putExtra(EXTRA_KEY_MULTIDEVICE_SEARCH_RESULT, reason.getIntValue());
             setResult(RESULT_SEARCH_STOPPED, result);
             finish();
+        }
+
+        @Override
+        public void onSearchStarted(RssiSupport supportsRssi) {
+            if(supportsRssi == RssiSupport.UNAVAILABLE)
+            {
+                Toast.makeText(mContext, "Rssi information not available.", Toast.LENGTH_SHORT).show();
+            } else if(supportsRssi == RssiSupport.UNKNOWN_OLDSERVICE)
+            {
+                Toast.makeText(mContext, "Rssi might be supported. Please upgrade the plugin service.", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 

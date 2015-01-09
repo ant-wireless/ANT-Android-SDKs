@@ -1,4 +1,4 @@
-# Android ANT+ SDK v.P.B2 - 8 Aug 2014
+# Android ANT+ SDK v.P.B3 **Release Candidate 1** - 9 Jan 2014
 This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to use ANT wireless technology freely outside of the defined ANT+ profiles, you must use the ANT Android SDK instead.
@@ -12,10 +12,12 @@ This SDK is available from:
 
 
 ## Quick Start Guide
+<i> Note: Refer to the "Creating ANT+ Android Applications" (.pdf) file for more detailed info </i>
+
 1. Ensure ANT Radio Service (ARS) is installed on device
 2. Ensure ANT Plugins Service is installed on device
 2. Reference ANT+ PluginLib library in your application project
-3. Refer to PluginSampler to see how to:
+3. Refer to the PluginSampler sample application to see how to:
     1. Search for ANT+ devices using MultiDeviceSearch
     2. Request access to device
     3. Subscribe to events
@@ -24,20 +26,53 @@ This SDK is available from:
 
 
 ## Contents
+<i> Note: Each top-level folder has a readme file which contains descriptions of the applications and tools and their intended purpose </i>
+
 * Creating ANT+ Android Applications
 * API
-  * PluginLib 3.1.0 (.jar and Javadoc)
-  * FIT 12.00 (.jar)
+  * PluginLib 3.3.0 **Release Candidate 1** (.jar and Javadoc)
+  * FIT 13.10 (.jar)
 * Services
-  * ANT+ Plugins Service 3.1.0 (.apk)
+  * ANT+ Plugins Service 3.3.0 **Release Candidate 1** (.apk)
   * Plugin Manager Launcher 1.1.0 (.apk)
 * Sample Applications
-  * Plugin Sampler 3.1.0(.apk and source)
+  * Plugin Sampler 3.2.0 **Release Candidate 1** (.apk and source)
   * ANT+ Demo 3.1.0 (.apk)
   * Heart Rate Grapher 3.0.0 (.apk)
 
 
-## Changelog
+Android ANT+ SDK Changelog
+=============================================
+
+<u>v.P.B3 **Release Candidate 1** - 9 Jan 2014</u>
+--------------------------------------------------
+> Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.3.0 **Release Candidate 1**
+> -----------------------------------------------------------------------------------
+> * Update to AntLib 4.9.0.RC3 library (w/ Android 5.0 Lollipop intent fix) [Lib + Service]
+> * Moved the MultiSearch class to the PCC package for clear discoverability (Note: This means you will need to correct your imports) [Lib]
+> * Support for providing ANT+ sensor data to the Google FIT sensor framework. ANT+ sensors will now show up in the Google Fit API available sensor list [Service]
+> * Add an RSSI event to most devices [Lib + Service]
+> * Add support for video remote control picture commands [Lib + Service]
+> * Add a callback to determine when MultiSearch has started and if RSSI support is available [Lib + Service]
+> * Add support to watch downloader for Health and Life Watch [Service]
+> * Add ability to connect to establish remote controls for more than one device [Service]
+> * Update to FIT 13.10 library [Lib]
+> * Fix a bug causing connecting to devices to timeout sometimes [Service]
+> * Fix several instances of releasing a PCC during the acquistion phase that could cause resource leaks and 'message to handler on a dead thread' logs [Lib + Service]
+> * Fix an error where manufacturer specific data events can falsely trigger the request finished event [Lib]
+> * Fix an error that could cause some commands to never receive a response in rare cases [Lib]
+> * Fix missing progress updates on large ANTFS downloads using small block sizes [Service]
+> * Fix missing requestAccess results when calling requestAccess several times in quick succession [Service]
+> * Fix some errors with requesting bike speed or cadence accesses in quick succession returning non-functioning PCCs [Service]
+> * Fix an error causing bike speed and cadence async scan closing to produce more than one result message [Service]
+> * Fix some crashes and errors when trying to connect to a controllable device with more than one type [Service]
+> * Fix controllable device dying in connection phase sometimes on Sony Ray phones [Service]
+> * Fix some errors with remote control plugin preventing connecting to remotes with multiple types supported [Service]
+> * Fix an error causing non-shareable already connected devices to show in the MultiDeviceSearch results [Service]
+> * Fix crashing when external sources send null intents to public service endpoints [Service]
+> * Fix missing return ALREADY_SUBSCRIBED when trying to connect to a device already connected to a given app when requesting access to specific device number [Service]
+> * Cleaned up some logging and javadoc [Lib + Service]
+
 
 <u>v.P.B2 - 8 Aug 2014</u>
 ---------------------------------------------
