@@ -1,6 +1,6 @@
 # ANT and ANT+ Android SDKs Beta Release
 
-*Disclaimer: This SDK version is a BETA release and is for testing and development purposes. The contents are subject to change before the official release. Because of this, there are no promises of future compatibility or support for any changes made in this SDK since the last official release. If you are looking for an official release, please check out the last official release under tag 'release/C.B3-P.B2'.*
+*Disclaimer: This master versionof the SDK is currently a BETA release, if you are looking for an official release, please check out the last official release under tag 'release/C.B3-P.B2'.  This beta release is for testing and development purposes, the contents are subject to change before the official release. Because of this, there are no promises of future compatibility or support for any changes made in this SDK since the last official release.*
 
 The Android ANT and Android ANT+ SDKs enable developers to create unique applications that use ANT wireless communication technology to communicate between a wide array of devices over various network configurations. ANT is a proven ultra-low power wireless sensor network protocol operating in the 2.4 GHz ISM band and is an effective solution for personal and local area networks. ANT is available on many Android devices including most modern flagship phones from Samsung and Sony. Additionally, ANT can be used on other devices with USB-Host support through the use of an ANT USB stick.
 
