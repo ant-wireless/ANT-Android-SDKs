@@ -1,4 +1,4 @@
-# Android ANT SDK v.C.B4 **Release Candidate 3** - 6 Aug 2014
+# Android ANT SDK v.C.B4 - 6 Feb 2015
 This software development kit provides the resources needed to develop an Android application which uses ANT technology to communicate wirelessly between ANT enabled devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to connect to ANT+ devices on the ANT+ network, you must use the ANT+ Android SDK instead.
@@ -27,13 +27,13 @@ This SDK is available from:
 
 * Creating ANT Android Applications (.pdf)
 * API
-  * ANT Lib 4.9.0 **Release Candidate 3** (.jar and Javadoc)
+  * ANT Lib 4.10.0 (.jar and Javadoc)
 * Services
-  * ANT Radio Service 4.9.0 **Release Candidate 3** (.apk)
-  * ANT USB Service 1.4.0 **Release Candidate 1** (.apk)
+  * ANT Radio Service 4.10.0 (.apk)
+  * ANT USB Service 1.4.0 (.apk)
 * Sample Applications
-  * Acquire Channels Sample 1.1.0 (.apk and source)
-  * Background Scan Sample 1.0.0 (.apk and source)
+  * Acquire Channels Sample 1.2.0 (.apk and source)
+  * Background Scan Sample 1.1.0 (.apk and source)
 * Tools
   * ANT Service Settings App 2.0.0 (.apk)
   * Emulator Bridge Tool 2.0.0 (.apk and PC app)
@@ -47,9 +47,9 @@ If you have any questions about developing ANT applications or need help visit t
 Android ANT SDK Changelog
 ==========================================
 
-v.C.B4 **Release Candidate 1** - 12 Dec 2014
+<u>v.C.B4 - 6 Feb 2015</u>
 -----------------------------------------
-> ANT Radio Service and ANTLib - v.4.9.0 **Release Candidate 3**
+> ANT Radio Service and ANTLib - v.4.10.0
 > -----------------------------------------------------
 > * Fix Android 5.0 intent compatibility (*If you compile your app targeting API >=21 you must use ANTLib >=4.9.0 or you will see 'java.lang.IllegalArgumentException: Service Intent must be explicit'*) [ANTLib]
 > * Fix Android 5.0 permissions compatibility (i.e. Play Store error 505) [ARS]
@@ -59,6 +59,7 @@ v.C.B4 **Release Candidate 1** - 12 Dec 2014
 > * Add support to use multiple private networks simultaneously on adapters that support more network slots [ARS]
 > * Add ANT_NOT_ENABLED channel not available reason for when phones start providing ANT as a system setting [ARS + ANTLib]
 > * Add proper equals() support to ChannelID class to easily compare Channel IDs) [ANTLib]
+> * Fix RSSI values incorrect on some Qualcomm based platforms [ARS]
 > * Fix a rare deadlock when releasing channels) [ANTLib]
 > * Fix an IllegalArgumentException when intitializing the ANT USB Service [ARS]
 > * Fix a possible deadlock when shutting down with an active burst [ARS]
@@ -71,7 +72,7 @@ v.C.B4 **Release Candidate 1** - 12 Dec 2014
 > * Add support for some new private network keys [ARS]
 >
 >
-> ANT USB Service - v.1.4.0 **Release Candidate 1**
+> ANT USB Service - v.1.4.0
 > -----------------------------------------------------
 > * Fix Android 5.0 permissions compatibility (i.e. Play Store error 505)
 > * Change service icon to grey to show up better on both dark and light backgrounds
@@ -79,6 +80,18 @@ v.C.B4 **Release Candidate 1** - 12 Dec 2014
 > * Fix NullPointerException processing ANT events when the ARS is shutting down
 > * Fix multiple USB device permission popups for the same device
 > * Cleaned and fixed up some logging
+>
+>
+> Acquire Channels Sample 1.2.0
+> -----------------------------------------------------
+> * Updated to AntLib 4.10.0
+>
+>
+> Background Scan Sample 1.1.0
+> -----------------------------------------------------
+> * Updated to AntLib 4.10.0
+> * Fix a possible IllegalStateException doing list updates
+
 
 v.C.B3 - 6 Aug 2014
 -----------------------------------------

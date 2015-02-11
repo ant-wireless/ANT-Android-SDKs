@@ -161,7 +161,7 @@ public class Activity_MultiDeviceSearchSampler extends Activity
                 activity = Activity_StrideSdmSampler.class;
                 break;
             case FITNESS_EQUIPMENT:
-                Toast.makeText(this, "Requires members-only PluginLib from thisisant.com",
+                Toast.makeText(this, "Requires ANT+ Members-Only Release",
                     Toast.LENGTH_SHORT).show();
                 break;
             case GEOCACHE:

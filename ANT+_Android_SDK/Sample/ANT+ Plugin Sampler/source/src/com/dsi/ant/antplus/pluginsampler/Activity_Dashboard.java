@@ -150,7 +150,7 @@ public class Activity_Dashboard extends FragmentActivity
         }
         else if(position == j++)
         {
-            Toast.makeText(this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
         }
         else if(position == j++)
         {

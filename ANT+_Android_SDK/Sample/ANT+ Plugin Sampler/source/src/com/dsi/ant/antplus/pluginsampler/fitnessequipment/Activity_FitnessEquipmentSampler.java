@@ -381,7 +381,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -391,7 +391,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -401,7 +401,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -410,7 +410,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -419,7 +419,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -428,7 +428,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -437,7 +437,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -446,7 +446,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -455,7 +455,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -464,7 +464,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -473,7 +473,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -482,7 +482,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -491,7 +491,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -500,7 +500,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Supported in Members-Only Beta Release", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -228,22 +228,27 @@ public class ChannelList extends Activity {
                 @Override
                 public void onChannelChanged(final ChannelInfo newInfo)
                 {
-                    Integer index = mIdChannelListIndexMap.get(newInfo.deviceNumber);
+                    final Integer index = mIdChannelListIndexMap.get(newInfo.deviceNumber);
 
                     // If found channel info is not in list, add it
                     if (index == null) {
                         addChannelToList(newInfo);
-                        index = mIdChannelListIndexMap.get(newInfo.deviceNumber);
-                    }
-
-                    if (null != index && index.intValue() < mChannelDisplayList.size())
-                    {
-                        mChannelDisplayList.set(index.intValue(), getDisplayText(newInfo));
                         runOnUiThread(new Runnable()
                         {
                             @Override
                             public void run()
                             {
+                                mChannelDisplayList.add(getDisplayText(newInfo));
+                                mChannelListAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    } else {
+                        runOnUiThread(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                mChannelDisplayList.set(index.intValue(), getDisplayText(newInfo));
                                 mChannelListAdapter.notifyDataSetChanged();
                             }
                         });
@@ -325,7 +330,6 @@ public class ChannelList extends Activity {
         Log.v(TAG, "addChannelToList...");
 
         mIdChannelListIndexMap.put(channelInfo.deviceNumber, mChannelDisplayList.size());
-        mChannelDisplayList.add(getDisplayText(channelInfo));
 
         Log.v(TAG, "...addChannelToList");
     }

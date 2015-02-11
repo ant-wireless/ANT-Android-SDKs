@@ -1,4 +1,4 @@
-# Android ANT+ SDK v.P.B3 **Release Candidate 1** - 9 Jan 2014
+# Android ANT+ SDK v.P.B3 - 11 Feb 2015
 This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to use ANT wireless technology freely outside of the defined ANT+ profiles, you must use the ANT Android SDK instead.
@@ -30,33 +30,33 @@ This SDK is available from:
 
 * Creating ANT+ Android Applications
 * API
-  * PluginLib 3.3.0 **Release Candidate 1** (.jar and Javadoc)
-  * FIT 13.10 (.jar)
+  * PluginLib 3.4.0 (.jar and Javadoc)
+  * FIT 14.00 (.jar)
 * Services
-  * ANT+ Plugins Service 3.3.0 **Release Candidate 1** (.apk)
+  * ANT+ Plugins Service 3.4.0 (.apk)
   * Plugin Manager Launcher 1.1.0 (.apk)
 * Sample Applications
-  * Plugin Sampler 3.2.0 **Release Candidate 1** (.apk and source)
-  * ANT+ Demo 3.1.0 (.apk)
-  * Heart Rate Grapher 3.0.0 (.apk)
+  * Plugin Sampler 3.4.0 (.apk and source)
+  * ANT+ Demo 3.2.0 (.apk)
+  * Heart Rate Grapher 4.0.0 (.apk)
 
 
 Android ANT+ SDK Changelog
 =============================================
 
-<u>v.P.B3 **Release Candidate 1** - 9 Jan 2014</u>
+<u>v.P.B3 - 11 Feb 2015</u>
 --------------------------------------------------
-> Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.3.0 **Release Candidate 1**
+> Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.4.0
 > -----------------------------------------------------------------------------------
-> * Update to AntLib 4.9.0.RC3 library (w/ Android 5.0 Lollipop intent fix) [Lib + Service]
-> * Moved the MultiSearch class to the PCC package for clear discoverability (Note: This means you will need to correct your imports) [Lib]
 > * Support for providing ANT+ sensor data to the Google FIT sensor framework. ANT+ sensors will now show up in the Google Fit API available sensor list [Service]
+> * Update to AntLib 4.10.0 library (w/ Android 5.0 Lollipop intent fix) [Lib + Service]
+> * Moved the MultiSearch class to the PCC package for clear discoverability (Note: This means you will need to correct your imports) [Lib]
 > * Add an RSSI event to most devices [Lib + Service]
 > * Add support for video remote control picture commands [Lib + Service]
 > * Add a callback to determine when MultiSearch has started and if RSSI support is available [Lib + Service]
 > * Add support to watch downloader for Health and Life Watch [Service]
 > * Add ability to connect to establish remote controls for more than one device [Service]
-> * Update to FIT 13.10 library [Lib]
+> * Update to FIT 14.00 library [Lib]
 > * Fix a bug causing connecting to devices to timeout sometimes [Service]
 > * Fix several instances of releasing a PCC during the acquistion phase that could cause resource leaks and 'message to handler on a dead thread' logs [Lib + Service]
 > * Fix an error where manufacturer specific data events can falsely trigger the request finished event [Lib]
@@ -72,6 +72,22 @@ Android ANT+ SDK Changelog
 > * Fix crashing when external sources send null intents to public service endpoints [Service]
 > * Fix missing return ALREADY_SUBSCRIBED when trying to connect to a device already connected to a given app when requesting access to specific device number [Service]
 > * Cleaned up some logging and javadoc [Lib + Service]
+>
+>
+> Ant+ Plugin Sampler - v.3.4.0
+> -----------------------------------------------------------------------------------
+> * Add example usage of new RSSI event to heart rate sample
+> * Update to use PluginLib v.3.3.0
+>
+>
+> ANT+ Heart Rate Grapher - v.4.0.0
+> -----------------------------------------------------------------------------------
+> * Add ability to use Google FIT framework as sensor source to demo Google FIT ANT+ sensor support and provide support for other sensor types such as BLE heart rate monitors and Android Wear devices
+>
+>
+> ANT+ Demo - v.3.2.0
+> -----------------------------------------------------------------------------------
+> * Prevent searching for sensors when application is in background to improve power and resource usage
 
 
 <u>v.P.B2 - 8 Aug 2014</u>

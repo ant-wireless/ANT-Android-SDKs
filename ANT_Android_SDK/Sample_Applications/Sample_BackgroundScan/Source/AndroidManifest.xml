@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dsi.ant.sample.backgroundscan"
-    android:versionCode="010000"
-    android:versionName="01.00.00" >
+    android:versionCode="010100"
+    android:versionName="01.01.00" >
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="17" />
