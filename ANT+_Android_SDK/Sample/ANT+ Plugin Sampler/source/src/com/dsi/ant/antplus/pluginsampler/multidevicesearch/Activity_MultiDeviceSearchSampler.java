@@ -161,8 +161,7 @@ public class Activity_MultiDeviceSearchSampler extends Activity
                 activity = Activity_StrideSdmSampler.class;
                 break;
             case FITNESS_EQUIPMENT:
-                Toast.makeText(this, "Requires ANT+ Members-Only Release",
-                    Toast.LENGTH_SHORT).show();
+                activity = Activity_FitnessEquipmentSampler.class;
                 break;
             case GEOCACHE:
             case CONTROLLABLE_DEVICE:

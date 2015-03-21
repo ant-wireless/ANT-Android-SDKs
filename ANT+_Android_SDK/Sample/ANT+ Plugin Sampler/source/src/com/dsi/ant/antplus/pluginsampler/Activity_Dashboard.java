@@ -33,6 +33,7 @@ import com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericControllableDe
 import com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericRemoteControlSampler;
 import com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoControllableDeviceSampler;
 import com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoRemoteControlSampler;
+import com.dsi.ant.antplus.pluginsampler.fitnessequipment.Activity_FitnessEquipmentSampler;
 import com.dsi.ant.antplus.pluginsampler.fitnessequipment.Dialog_ConfigSettings;
 import com.dsi.ant.antplus.pluginsampler.geocache.Activity_GeoScanList;
 import com.dsi.ant.antplus.pluginsampler.heartrate.Activity_AsyncScanHeartRateSampler;
@@ -150,7 +151,8 @@ public class Activity_Dashboard extends FragmentActivity
         }
         else if(position == j++)
         {
-            Toast.makeText(this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, Activity_FitnessEquipmentSampler.class);
+            startActivity(i);
         }
         else if(position == j++)
         {

@@ -1,4 +1,4 @@
-# Android ANT+ SDK v.P.B3 - 11 Feb 2015
+# Android ANT+ SDK v.P.B4 - 20 Mar 2015
 This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to use ANT wireless technology freely outside of the defined ANT+ profiles, you must use the ANT Android SDK instead.
@@ -30,13 +30,13 @@ This SDK is available from:
 
 * Creating ANT+ Android Applications
 * API
-  * PluginLib 3.4.0 (.jar and Javadoc)
-  * FIT 14.00 (.jar)
+  * PluginLib 3.5.0 (.jar and Javadoc)
+  * FIT 14.10 (.jar)
 * Services
-  * ANT+ Plugins Service 3.4.0 (.apk)
+  * ANT+ Plugins Service 3.5.0 (.apk)
   * Plugin Manager Launcher 1.1.0 (.apk)
 * Sample Applications
-  * Plugin Sampler 3.4.0 (.apk and source)
+  * Plugin Sampler 3.5.0 (.apk and source)
   * ANT+ Demo 3.2.0 (.apk)
   * Heart Rate Grapher 4.0.0 (.apk)
 
@@ -44,6 +44,22 @@ This SDK is available from:
 Android ANT+ SDK Changelog
 =============================================
 
+<u>v.P.B4 - 20 Mar 2015</u>
+--------------------------------------------------
+> Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.5.0
+> -----------------------------------------------------------------------------------
+> * Fitness Equipment Controls released to public API [Lib]
+> * Update to FitLib 14.10 (fixes date inconsistency in BPM) [Lib + Service]
+> * Fix BPM resetDataAndSetTime to work properly [Service]
+> * Fix a couple causes of crashes in the search UI activity [Service]
+> * Fix an error connecting to bike S&C devices when saved as the preferred device [Service]
+> 
+> Ant+ Plugin Sampler - v.3.5.0
+> -----------------------------------------------------------------------------------
+> * Fitness Equipment Controls released to public API
+> * Update to use PluginLib v.3.5.0
+>
+>
 <u>v.P.B3 - 11 Feb 2015</u>
 --------------------------------------------------
 > Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.4.0

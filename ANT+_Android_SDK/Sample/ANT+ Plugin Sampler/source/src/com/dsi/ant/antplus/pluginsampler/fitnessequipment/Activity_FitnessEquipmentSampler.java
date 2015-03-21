@@ -24,13 +24,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dsi.ant.antplus.pluginsampler.R;
+import com.dsi.ant.antplus.pluginsampler.multidevicesearch.Activity_MultiDeviceSearchSampler;
 import com.dsi.ant.plugins.antplus.common.FitFileCommon.FitFile;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.CalculatedTrainerDistanceReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.CalculatedTrainerSpeedReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.CalibrationInProgress;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.CalibrationResponse;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.Capabilities;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.CommandStatus;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.EquipmentState;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.EquipmentType;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.HeartRateDataSource;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IBasicResistanceReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IBikeDataReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ICalculatedTrainerPowerReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ICalibrationInProgressReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ICalibrationResponseReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ICapabilitiesReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IClimberDataReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ICommandStatusReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IEllipticalDataReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IFitnessEquipmentStateReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IGeneralFitnessEquipmentDataReceiver;
@@ -38,9 +51,19 @@ import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IGeneralMetabo
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IGeneralSettingsReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ILapOccuredReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.INordicSkierDataReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IRawTrainerDataReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IRawTrainerTorqueDataReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IRowerDataReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ITargetPowerReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ITrackResistanceReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ITrainerStatusReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.ITreadmillDataReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IUserConfigurationReceiver;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.IWindResistanceReceiver;
 import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.Settings;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.TrainerDataSource;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.TrainerStatusFlag;
+import com.dsi.ant.plugins.antplus.pcc.AntPlusFitnessEquipmentPcc.UserConfiguration;
 import com.dsi.ant.plugins.antplus.pcc.defines.DeviceState;
 import com.dsi.ant.plugins.antplus.pcc.defines.EventFlag;
 import com.dsi.ant.plugins.antplus.pcc.defines.RequestAccessResult;
@@ -51,6 +74,7 @@ import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.CommonDataPage;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IManufacturerIdentificationReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IProductInformationReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IRequestFinishedReceiver;
+import com.dsi.ant.plugins.antplus.pccbase.MultiDeviceSearch.MultiDeviceSearchResult;
 import com.dsi.ant.plugins.antplus.pccbase.PccReleaseHandle;
 
 import java.io.ByteArrayOutputStream;
@@ -346,33 +370,33 @@ public class Activity_FitnessEquipmentSampler extends Activity
             }
         }
 
-    final IRequestFinishedReceiver requestFinishedReceiver = new IRequestFinishedReceiver()
-    {
-        @Override
-        public void onNewRequestFinished(final RequestStatus requestStatus)
+        final IRequestFinishedReceiver requestFinishedReceiver = new IRequestFinishedReceiver()
         {
-            runOnUiThread(
-                new Runnable()
-                {
-                    @Override
-                    public void run()
+            @Override
+            public void onNewRequestFinished(final RequestStatus requestStatus)
+            {
+                runOnUiThread(
+                    new Runnable()
                     {
-                        switch(requestStatus)
+                        @Override
+                        public void run()
                         {
-                            case SUCCESS:
-                                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Successfully Sent", Toast.LENGTH_SHORT).show();
-                                break;
-                            case FAIL_PLUGINS_SERVICE_VERSION:
-                                Toast.makeText(Activity_FitnessEquipmentSampler.this,
-                                   "Plugin Service Upgrade Required?",
-                                    Toast.LENGTH_SHORT).show();
-                                break;
-                            default:
-                                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Failed to be Sent", Toast.LENGTH_SHORT).show();
-                                break;
+                            switch(requestStatus)
+                            {
+                                case SUCCESS:
+                                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Successfully Sent", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case FAIL_PLUGINS_SERVICE_VERSION:
+                                    Toast.makeText(Activity_FitnessEquipmentSampler.this,
+                                        "Plugin Service Upgrade Required?",
+                                        Toast.LENGTH_SHORT).show();
+                                    break;
+                                default:
+                                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Failed to be Sent", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
                         }
-                    }
-                });
+                    });
             }
         };
 
@@ -381,7 +405,11 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO The fitness equipment may request calibration from the user, which is when this command would be sent.
+                boolean submitted = fePcc.requestZeroOffsetCalibration(requestFinishedReceiver, null, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -391,7 +419,11 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO The fitness equipment may request calibration from the user, which is when this command would be sent.
+                boolean submitted = fePcc.requestSpinDownCalibration(requestFinishedReceiver, null, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -401,7 +433,11 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO The capabilities should be requested before attempting to send new control settings to determine which modes are supported.
+                boolean submitted = fePcc.requestCapabilities(requestFinishedReceiver, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -410,7 +446,16 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                UserConfiguration config = new UserConfiguration();
+                config.bicycleWeight = new BigDecimal("10.00");         //10kg bike weight
+                config.gearRatio = new BigDecimal("0.03");              //0.03 gear ratio
+                config.bicycleWheelDiameter = new BigDecimal("0.70");   //0.70m wheel diameter
+                config.userWeight = new BigDecimal("75.00");            //75kg user
+
+                boolean submitted = fePcc.requestSetUserConfiguration(config, requestFinishedReceiver);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -419,7 +464,10 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                boolean submitted = fePcc.requestUserConfiguration(requestFinishedReceiver, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -428,16 +476,26 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO The capabilities should be requested before attempting to send new control settings to determine which modes are supported.
+                boolean submitted = fePcc.getTrainerMethods().requestSetBasicResistance(new BigDecimal("4.5"), requestFinishedReceiver);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
         button_setTargetPower.setOnClickListener(new View.OnClickListener()
         {
+            BigDecimal targetPower = new BigDecimal("42.25");   //42.25%
+
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO The capabilities should be requested before attempting to send new control settings to determine which modes are supported.
+                boolean submitted = fePcc.getTrainerMethods().requestSetTargetPower(targetPower, requestFinishedReceiver);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -446,7 +504,12 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO The capabilities should be requested before attempting to send new control settings to determine which modes are supported.
+                //null indicates default values
+                boolean submitted = fePcc.getTrainerMethods().requestSetWindResistance(null, null, null, null, null, requestFinishedReceiver);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -455,7 +518,12 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO The capabilities should be requested before attempting to send new control settings to determine which modes are supported.
+                //null indicates default values
+                boolean submitted = fePcc.getTrainerMethods().requestSetTrackResistance(null, null, requestFinishedReceiver);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -464,7 +532,11 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                //TODO This can be requested after a command is sent to determine it's status on the trainer.
+                boolean submitted = fePcc.getTrainerMethods().requestCommandStatus(requestFinishedReceiver, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -473,7 +545,10 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                boolean submitted = fePcc.getTrainerMethods().requestBasicResistance(requestFinishedReceiver, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -482,7 +557,10 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                boolean submitted = fePcc.getTrainerMethods().requestTargetPower(requestFinishedReceiver, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -491,7 +569,10 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                boolean submitted = fePcc.getTrainerMethods().requestWindResistance(requestFinishedReceiver, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -500,7 +581,10 @@ public class Activity_FitnessEquipmentSampler extends Activity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(Activity_FitnessEquipmentSampler.this, "Requires ANT+ Members-Only Release", Toast.LENGTH_SHORT).show();
+                boolean submitted = fePcc.getTrainerMethods().requestTrackResistance(requestFinishedReceiver, null);
+
+                if(!submitted)
+                    Toast.makeText(Activity_FitnessEquipmentSampler.this, "Request Could not be Made", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -790,6 +874,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
                                     if(resistanceLevel == -1)
                                         tv_resistanceLevel.setText("Invalid");
                                     else
+                                        //TODO If this is a Fitness Equipment Controls device, this represents the current set resistance level at 0.5% per unit from 0% to 100%
                                         tv_resistanceLevel.setText(String.valueOf(resistanceLevel));
                                 }
                             });
@@ -1167,6 +1252,523 @@ public class Activity_FitnessEquipmentSampler extends Activity
                                 });
                                 subscriptionsDone = true;
                                 break;
+                            case TRAINER:
+                                tv_feType.setText("TRAINER");
+
+                                if(subscriptionsDone)
+                                    break;
+
+                                fePcc.getTrainerMethods().subscribeCalculatedTrainerPowerEvent(new ICalculatedTrainerPowerReceiver()
+                                {
+                                    @Override
+                                    public void onNewCalculatedTrainerPower(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final TrainerDataSource dataSource, final BigDecimal calculatedPower)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_CalculatedPower.setText(String.valueOf(calculatedPower) + "W");
+                                                String source;
+
+                                                //NOTE: The calculated power event will send an initial value code if it needed to calculate a NEW average.
+                                                //This is important if using the calculated power event to record user data, as an initial value indicates an average could not be guaranteed.
+                                                //The event prioritizes calculating with torque data over power only data.
+                                                switch(dataSource)
+                                                {
+                                                    case COAST_OR_STOP_DETECTED:
+                                                        //A coast or stop condition detected by the ANT+ Plugin.
+                                                        //This is automatically sent by the plugin after 3 seconds of unchanging events.
+                                                        //NOTE: This value should be ignored by apps which are archiving the data for accuracy.
+                                                    case INITIAL_VALUE_TRAINER_DATA:
+                                                        //New data calculated from initial value data source
+                                                    case TRAINER_DATA:
+                                                    case INITIAL_VALUE_TRAINER_TORQUE_DATA:
+                                                        //New data calculated from initial value data source
+                                                    case TRAINER_TORQUE_DATA:
+                                                        source = dataSource.toString();
+                                                        break;
+                                                    case UNRECOGNIZED:
+                                                        Toast.makeText(
+                                                            Activity_FitnessEquipmentSampler.this,
+                                                            "Failed: UNRECOGNIZED. PluginLib Upgrade Required?",
+                                                            Toast.LENGTH_SHORT).show();
+                                                    default:
+                                                        source = "N/A";
+                                                        break;
+                                                }
+
+                                                textView_CalculatedPowerSource.setText(source);
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeCalculatedTrainerSpeedEvent(new CalculatedTrainerSpeedReceiver(new BigDecimal("0.70"))   //0.70m wheel diameter
+                                {
+                                    @Override
+                                    public void onNewCalculatedTrainerSpeed(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final TrainerDataSource dataSource, final BigDecimal calculatedSpeed)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_CalculatedSpeed.setText(String.valueOf(calculatedSpeed) + "km/h");
+                                                String source;
+
+                                                //NOTE: The calculated speed event will send an initial value code if it needed to calculate a NEW average.
+                                                //This is important if using the calculated speed event to record user data, as an initial value indicates an average could not be guaranteed.
+                                                switch(dataSource)
+                                                {
+                                                    case COAST_OR_STOP_DETECTED:
+                                                        //A coast or stop condition detected by the ANT+ Plugin.
+                                                        //This is automatically sent by the plugin after 3 seconds of unchanging events.
+                                                        //NOTE: This value should be ignored by apps which are archiving the data for accuracy.
+                                                    case INITIAL_VALUE_TRAINER_TORQUE_DATA:
+                                                        //New data calculated from initial value data source
+                                                    case TRAINER_TORQUE_DATA:
+                                                        source = dataSource.toString();
+                                                        break;
+                                                    case UNRECOGNIZED:
+                                                        Toast.makeText(
+                                                            Activity_FitnessEquipmentSampler.this,
+                                                            "Failed: UNRECOGNIZED. PluginLib Upgrade Required?",
+                                                            Toast.LENGTH_SHORT).show();
+                                                    default:
+                                                        source = "N/A";
+                                                        break;
+                                                }
+
+                                                textView_CalculatedSpeedSource.setText(source);
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeCalculatedTrainerDistanceEvent(new CalculatedTrainerDistanceReceiver(new BigDecimal("0.70")) //0.70m wheel diameter
+                                {
+
+                                    @Override
+                                    public void onNewCalculatedTrainerDistance(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final TrainerDataSource dataSource, final BigDecimal calculatedDistance)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_CalculatedDistance.setText(String.valueOf(calculatedDistance) + "m");
+                                                String source;
+
+                                                //NOTE: The calculated speed event will send an initial value code if it needed to calculate a NEW average.
+                                                //This is important if using the calculated speed event to record user data, as an initial value indicates an average could not be guaranteed.
+                                                switch(dataSource)
+                                                {
+                                                    case COAST_OR_STOP_DETECTED:
+                                                        //A coast or stop condition detected by the ANT+ Plugin.
+                                                        //This is automatically sent by the plugin after 3 seconds of unchanging events.
+                                                        //NOTE: This value should be ignored by apps which are archiving the data for accuracy.
+                                                    case INITIAL_VALUE_TRAINER_TORQUE_DATA:
+                                                        //New data calculated from initial value data source
+                                                    case TRAINER_TORQUE_DATA:
+                                                        source = dataSource.toString();
+                                                        break;
+                                                    case UNRECOGNIZED:
+                                                        Toast.makeText(
+                                                        Activity_FitnessEquipmentSampler.this,
+                                                        "Failed: UNRECOGNIZED. PluginLib Upgrade Required?",
+                                                        Toast.LENGTH_SHORT).show();
+                                                    default:
+                                                        source = "N/A";
+                                                        break;
+                                                }
+
+                                                textView_CalculatedDistanceSource.setText(source);
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeRawTrainerDataEvent(new IRawTrainerDataReceiver()
+                                {
+                                    @Override
+                                    public void onNewRawTrainerData(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final long updateEventCount, final int instantaneousCadence, final int instantaneousPower,
+                                            final long accumulatedPower)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+
+                                                //NOTE: If the update event count has not incremented then the data on this page has not changed.
+                                                //Please refer to the ANT+ Fitness Equipment Device Profile for more information.
+                                                textView_TrainerUpdateEventCount.setText(String.valueOf(updateEventCount));
+
+                                                if(instantaneousCadence != -1)
+                                                    textView_TrainerInstantaneousCadence.setText(String.valueOf(instantaneousCadence) + "RPM");
+                                                else
+                                                    textView_TrainerInstantaneousCadence.setText("N/A");
+
+                                                if(instantaneousPower != -1)
+                                                    textView_TrainerInstantaneousPower.setText(String.valueOf(instantaneousPower) + "W");
+                                                else
+                                                    textView_TrainerInstantaneousPower.setText("N/A");
+
+                                                if(accumulatedPower != -1)
+                                                    textView_TrainerAccumulatedPower.setText(String.valueOf(accumulatedPower) + "W");
+                                                else
+                                                    textView_TrainerAccumulatedPower.setText("N/A");
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeRawTrainerTorqueDataEvent(new IRawTrainerTorqueDataReceiver()
+                                {
+                                    @Override
+                                    public void onNewRawTrainerTorqueData(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final long updateEventCount, final long accumulatedWheelTicks, final BigDecimal accumulatedWheelPeriod,
+                                            final BigDecimal accumulatedTorque)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+
+                                                textView_TrainerTorqueUpdateEventCount.setText(String.valueOf(updateEventCount));
+                                                textView_AccumulatedWheelTicks.setText(String.valueOf(accumulatedWheelTicks) + "rotations");
+                                                textView_AccumulatedWheelPeriod.setText(String.valueOf(accumulatedWheelPeriod) + "s");
+                                                textView_TrainerAccumulatedTorque.setText(String.valueOf(accumulatedTorque) + "Nm");
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.subscribeCapabilitiesEvent(new ICapabilitiesReceiver()
+                                {
+
+                                    @Override
+                                    public void onNewCapabilities(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final Capabilities capabilities)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+
+                                                if(capabilities.maximumResistance != null)
+                                                    textView_MaximumResistance.setText(String.valueOf(capabilities.maximumResistance) + "N");
+                                                else
+                                                    textView_MaximumResistance.setText("N/A");
+
+                                                textView_BasicResistanceSupport.setText(capabilities.basicResistanceModeSupport ? "True" : "False");
+                                                textView_TargetPowerSupport.setText(capabilities.targetPowerModeSupport ? "True" : "False");
+                                                textView_SimulationModeSupport.setText(capabilities.simulationModeSupport ? "True" : "False");
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeTrainerStatusEvent(new ITrainerStatusReceiver()
+                                {
+                                    @Override
+                                    public void onNewTrainerStatus(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final EnumSet<TrainerStatusFlag> trainerStatusFlags)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+
+                                                for(TrainerStatusFlag flag : trainerStatusFlags)
+                                                {
+                                                    switch(flag)
+                                                    {
+                                                        case BICYCLE_POWER_CALIBRATION_REQUIRED:
+                                                            break;
+                                                        case MAXIMUM_POWER_LIMIT_REACHED:
+                                                            break;
+                                                        case MINIMUM_POWER_LIMIT_REACHED:
+                                                            break;
+                                                        case RESISTANCE_CALIBRATION_REQUIRED:
+                                                            break;
+                                                        case UNRECOGNIZED_FLAG_PRESENT:
+                                                            break;
+                                                        case USER_CONFIGURATION_REQUIRED:
+                                                            break;
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.subscribeCalibrationInProgressEvent(new ICalibrationInProgressReceiver()
+                                {
+                                    @Override
+                                    public void onNewCalibrationInProgress(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final CalibrationInProgress calibrationInProgress)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_ZeroOffsetCalPending.setText(calibrationInProgress.zeroOffsetCalibrationPending ? "Pending" : "Not Requested");
+                                                textView_SpinDownCalPending.setText(calibrationInProgress.spinDownCalibrationPending ? "Pending" : "Not Requested");
+
+                                                switch(calibrationInProgress.temperatureCondition)
+                                                {
+                                                    case CURRENT_TEMPERATURE_OK:
+                                                    case CURRENT_TEMPERATURE_TOO_HIGH:
+                                                    case CURRENT_TEMPERATURE_TOO_LOW:
+                                                    case NOT_APPLICABLE:
+                                                    case UNRECOGNIZED:
+                                                    default:
+                                                        textView_TemperatureCondition.setText(calibrationInProgress.temperatureCondition.toString());
+                                                        break;
+
+                                                }
+
+                                                switch(calibrationInProgress.speedCondition)
+                                                {
+                                                    case CURRENT_SPEED_OK:
+                                                    case CURRENT_SPEED_TOO_LOW:
+                                                    case NOT_APPLICABLE:
+                                                    case UNRECOGNIZED:
+                                                    default:
+                                                        textView_SpeedCondition.setText(calibrationInProgress.speedCondition.toString());
+                                                        break;
+
+                                                }
+
+                                                if(calibrationInProgress.currentTemperature != null)
+                                                    textView_CurrentTemperature.setText(calibrationInProgress.currentTemperature.toString() + "C");
+                                                else
+                                                    textView_CurrentTemperature.setText("N/A");
+
+                                                if(calibrationInProgress.targetSpeed != null)
+                                                    textView_TargetSpeed.setText(calibrationInProgress.currentTemperature.toString() + "m/s");
+                                                else
+                                                    textView_TargetSpeed.setText("N/A");
+
+                                                if(calibrationInProgress.targetSpinDownTime != null)
+                                                    textView_TargetSpinDownTime.setText(calibrationInProgress.targetSpinDownTime.toString() + "ms");
+                                                else
+                                                    textView_TargetSpinDownTime.setText("N/A");
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.subscribeCalibrationResponseEvent(new ICalibrationResponseReceiver()
+                                {
+
+                                    @Override
+                                    public void onNewCalibrationResponse(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final CalibrationResponse calibrationResponse)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_ZeroOffsetCalSuccess.setText(calibrationResponse.zeroOffsetCalibrationSuccess ? "Success" : "N/A");
+                                                textView_SpinDownCalSuccess.setText(calibrationResponse.spinDownCalibrationSuccess ? "Success" : "N/A");
+
+                                                if(calibrationResponse.temperature != null)
+                                                    textView_Temperature.setText(calibrationResponse.temperature.toString() + "C");
+                                                else
+                                                    textView_Temperature.setText("N/A");
+
+                                                if(calibrationResponse.zeroOffset != null)
+                                                    textView_ZeroOffset.setText(calibrationResponse.zeroOffset.toString());
+                                                else
+                                                    textView_ZeroOffset.setText("N/A");
+
+                                                if(calibrationResponse.spinDownTime != null)
+                                                    textView_SpinDownTime.setText(calibrationResponse.spinDownTime.toString() + "ms");
+                                                else
+                                                    textView_SpinDownTime.setText("N/A");
+
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeCommandStatusEvent(new ICommandStatusReceiver()
+                                {
+
+                                    @Override
+                                    public void onNewCommandStatus(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final CommandStatus commandStatus)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+
+                                                if(commandStatus.lastReceivedSequenceNumber != -1)
+                                                    textView_SequenceNumber.setText(String.valueOf(commandStatus.lastReceivedSequenceNumber));
+                                                else
+                                                    textView_SequenceNumber.setText("No control page Rx'd");
+
+                                                switch(commandStatus.status)
+                                                {
+                                                    case FAIL:
+                                                    case NOT_SUPPORTED:
+                                                    case PASS:
+                                                    case PENDING:
+                                                    case REJECTED:
+                                                    case UNINITIALIZED:
+                                                    case UNRECOGNIZED:
+                                                    default:
+                                                        textView_CommandStatus.setText(commandStatus.status.toString());
+                                                        break;
+                                                }
+
+                                                String rawData = "";
+                                                for(byte b : commandStatus.rawResponseData)
+                                                    rawData += "[" + b + "]";
+                                                textView_RawData.setText(rawData);
+
+                                                textView_LastRxCmdId.setText(commandStatus.lastReceivedCommandId.toString());
+                                                switch(commandStatus.lastReceivedCommandId)
+                                                {
+                                                    case BASIC_RESISTANCE:
+                                                        textView_TotalResistanceStatus.setText(commandStatus.totalResistance.toString()+ "%");
+                                                        break;
+                                                    case TARGET_POWER:
+                                                        textView_TargetPowerStatus.setText(commandStatus.targetPower.toString() + "W");
+                                                        break;
+                                                    case WIND_RESISTANCE:
+                                                        textView_WindResistanceCoefficientStatus.setText(commandStatus.windResistanceCoefficient.toString() + "kg/m");
+                                                        textView_WindSpeedStatus.setText(commandStatus.windSpeed.toString() + "km/h");
+                                                        textView_DraftingFactorStatus.setText(commandStatus.draftingFactor.toString());
+                                                        break;
+                                                    case TRACK_RESISTANCE:
+                                                        textView_GradeStatus.setText(commandStatus.grade.toString() + "%");
+                                                        textView_RollingResistanceCoefficientStatus.setText(commandStatus.rollingResistanceCoefficient.toString());
+                                                        break;
+                                                    case NO_CONTROL_PAGE_RECEIVED:
+                                                        break;
+                                                    case UNRECOGNIZED:
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.subscribeUserConfigurationEvent(new IUserConfigurationReceiver()
+                                {
+                                    @Override
+                                    public void onNewUserConfiguration(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final UserConfiguration userConfiguration)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_UserWeight.setText(userConfiguration.userWeight != null ? userConfiguration.userWeight.toString() + "kg" : "N/A");
+                                                textView_BicycleWeight.setText(userConfiguration.bicycleWeight != null ? userConfiguration.bicycleWeight.toString() + "kg" : "N/A");
+                                                textView_BicycleWheelDiameter.setText(userConfiguration.bicycleWheelDiameter != null ? userConfiguration.bicycleWheelDiameter.toString() + "m" : "N/A");
+                                                textView_GearRatio.setText(userConfiguration.gearRatio != null ? userConfiguration.gearRatio.toString() : "N/A");
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeBasicResistanceEvent(new IBasicResistanceReceiver()
+                                {
+
+                                    @Override
+                                    public void onNewBasicResistance(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final BigDecimal totalResistance)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_TotalResistance.setText(totalResistance.toString() + "%");
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeTargetPowerEvent(new ITargetPowerReceiver()
+                                {
+
+                                    @Override
+                                    public void onNewTargetPower(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final BigDecimal targetPower)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_TargetPower.setText(targetPower.toString() + "W");
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeTrackResistanceEvent(new ITrackResistanceReceiver()
+                                {
+
+                                    @Override
+                                    public void onNewTrackResistance(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final BigDecimal grade, final BigDecimal rollingResistanceCoefficient)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_Grade.setText(grade.toString() + "%");
+                                                textView_RollingResistanceCoefficient.setText(rollingResistanceCoefficient.toString());
+                                            }
+                                        });
+                                    }
+                                });
+                                fePcc.getTrainerMethods().subscribeWindResistanceEvent(new IWindResistanceReceiver()
+                                {
+
+                                    @Override
+                                    public void onNewWindResistance(final long estTimestamp, EnumSet<EventFlag> eventFlags,
+                                            final BigDecimal windResistanceCoefficient, final int windSpeed, final BigDecimal draftingFactor)
+                                    {
+                                        runOnUiThread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                tv_estTimestamp.setText(String.valueOf(estTimestamp));
+                                                textView_WindResistanceCoefficient.setText(windResistanceCoefficient.toString() + "kg/m");
+                                                textView_WindSpeed.setText(String.valueOf(windSpeed) + "km/h");
+                                                textView_DraftingFactor.setText(draftingFactor.toString());
+                                            }
+                                        });
+                                    }
+                                });
+                                subscriptionsDone = true;
+                                break;
                             case UNKNOWN:
                                 tv_feType.setText("UNKNOWN");
                                 break;
@@ -1206,9 +1808,31 @@ public class Activity_FitnessEquipmentSampler extends Activity
         };
 
         //Make the access request
-        releaseHandle = AntPlusFitnessEquipmentPcc.requestNewPersonalSessionAccess(this,
-            mPluginAccessResultReceiver, mDeviceStateChangeReceiver,
-            mFitnessEquipmentStateReceiver, 0, settings, files);
+        //If the Activity was passed the bundle it indicates this Activity was started intended for traditional Fitness Equipment, otherwise connect to broadcast based FE Controls
+        //TODO Both PCC request types may be done concurrently on separate release handles in order to simultaneously support both types of FE without requiring prior knowledge of types
+        if (b == null)
+        {
+            releaseHandle = AntPlusFitnessEquipmentPcc.requestNewOpenAccess(this,
+                this, mPluginAccessResultReceiver, mDeviceStateChangeReceiver,
+                mFitnessEquipmentStateReceiver);
+        }
+        else if (b.containsKey(
+            Activity_MultiDeviceSearchSampler.EXTRA_KEY_MULTIDEVICE_SEARCH_RESULT))
+        {
+            // device has already been selected through the multi-device search
+            MultiDeviceSearchResult result = b.getParcelable(
+                Activity_MultiDeviceSearchSampler.EXTRA_KEY_MULTIDEVICE_SEARCH_RESULT);
+
+            releaseHandle = AntPlusFitnessEquipmentPcc.requestNewOpenAccess(this,
+                result.getAntDeviceNumber(), 0, mPluginAccessResultReceiver,
+                mDeviceStateChangeReceiver, mFitnessEquipmentStateReceiver);
+        }
+        else
+        {
+            releaseHandle = AntPlusFitnessEquipmentPcc.requestNewPersonalSessionAccess(this,
+                mPluginAccessResultReceiver, mDeviceStateChangeReceiver,
+                mFitnessEquipmentStateReceiver, 0, settings, files);
+        }
     }
 
     @Override
