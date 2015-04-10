@@ -46,6 +46,7 @@ Android ANT+ SDK Changelog
 
 <u>v.P.B4 - 20 Mar 2015</u>
 --------------------------------------------------
+
 > Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.5.0
 > -----------------------------------------------------------------------------------
 > * Fitness Equipment Controls released to public API [Lib]
@@ -58,10 +59,11 @@ Android ANT+ SDK Changelog
 > -----------------------------------------------------------------------------------
 > * Fitness Equipment Controls released to public API
 > * Update to use PluginLib v.3.5.0
->
->
+
+
 <u>v.P.B3 - 11 Feb 2015</u>
 --------------------------------------------------
+
 > Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.4.0
 > -----------------------------------------------------------------------------------
 > * Support for providing ANT+ sensor data to the Google FIT sensor framework. ANT+ sensors will now show up in the Google Fit API available sensor list [Service]
@@ -108,6 +110,7 @@ Android ANT+ SDK Changelog
 
 <u>v.P.B2 - 8 Aug 2014</u>
 ---------------------------------------------
+
 > Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.1.0
 > -----------------------------------------------------------
 > * Added Remote Control profile (Audio, Video, and Generic support)
