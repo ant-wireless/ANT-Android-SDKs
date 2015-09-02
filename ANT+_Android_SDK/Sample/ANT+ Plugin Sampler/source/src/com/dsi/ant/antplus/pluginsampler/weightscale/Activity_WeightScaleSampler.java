@@ -51,6 +51,7 @@ import com.dsi.ant.plugins.antplus.pcc.defines.RequestAccessResult;
 import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IDeviceStateChangeReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPluginPcc.IPluginAccessResultReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IManufacturerIdentificationReceiver;
+import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IManufacturerSpecificDataReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.AntPlusCommonPcc.IProductInformationReceiver;
 import com.dsi.ant.plugins.antplus.pccbase.MultiDeviceSearch.MultiDeviceSearchResult;
 import com.dsi.ant.plugins.antplus.pccbase.PccReleaseHandle;
@@ -303,6 +304,32 @@ public class Activity_WeightScaleSampler extends FragmentActivity
                                 tv_bodyWeightBroadcast.setText(bodyWeight.toString());
                             else
                                 tv_bodyWeightBroadcast.setText(bodyWeightStatus.toString());
+                        }
+                    });
+                }
+            });
+
+            wgtPcc.subscribeManufacturerSpecificDataEvent(new IManufacturerSpecificDataReceiver()
+            {
+                @Override
+                public void onNewManufacturerSpecificData(final long estTimestamp,
+                        final EnumSet<EventFlag> eventFlags, final byte[] rawDataBytes) {
+                    runOnUiThread(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            tv_estTimestamp.setText(String.valueOf(estTimestamp));
+
+                            StringBuffer hexString = new StringBuffer();
+                            for (int i = 0; i < rawDataBytes.length; i++)
+                            {
+                                hexString
+                                        .append("[")
+                                        .append(String.format("%02X",
+                                                rawDataBytes[i] & 0xFF)).append("]");
+                            }
+                            //tv_manufacturerSpecificData.setText(hexString.toString());
                         }
                     });
                 }

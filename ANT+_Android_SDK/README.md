@@ -1,4 +1,4 @@
-# Android ANT+ SDK v.P.B4 - 20 Mar 2015
+# Android ANT+ SDK v.P.B5 - 31 Aug 2015
 This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to use ANT wireless technology freely outside of the defined ANT+ profiles, you must use the ANT Android SDK instead.
@@ -30,19 +30,37 @@ This SDK is available from:
 
 * Creating ANT+ Android Applications
 * API
-  * PluginLib 3.5.0 (.jar and Javadoc)
-  * FIT 14.10 (.jar)
+  * PluginLib 3.6.0 (.jar and Javadoc)
+  * FIT 16.00 (.jar)
 * Services
-  * ANT+ Plugins Service 3.5.0 (.apk)
+  * ANT+ Plugins Service 3.6.0 (.apk)
   * Plugin Manager Launcher 1.1.0 (.apk)
 * Sample Applications
-  * Plugin Sampler 3.5.0 (.apk and source)
+  * Plugin Sampler 3.6.0 (.apk and source)
   * ANT+ Demo 3.2.0 (.apk)
   * Heart Rate Grapher 4.0.0 (.apk)
 
 
 Android ANT+ SDK Changelog
 =============================================
+
+<u>v.P.B5 - 31 Aug 2015</u>
+--------------------------------------------------
+
+> Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.6.0
+> -----------------------------------------------------------------------------------
+> * Fix some issues preventing connecting to combined speed and cadence bike sensors [Lib + Service]
+> * Fix some crashes during searching [Service]
+> * Add ability to send manufacturer specific pages on profiles that support it [Lib + Service]
+> * Fix a crash when old apps request combined speed and cadence bike sensors [Service] 
+> * Improve Javadoc relating to SEARCHING and DEAD states [Lib]
+> * Update to AntLib 4.14.0 [Lib + Service]
+> * Update to FitLib 16.00 [Lib + Service]
+> 
+> Ant+ Plugin Sampler - v.3.6.0
+> -----------------------------------------------------------------------------------
+> * Update to PluginLib v.3.6.0
+
 
 <u>v.P.B4 - 20 Mar 2015</u>
 --------------------------------------------------

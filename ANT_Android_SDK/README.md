@@ -1,4 +1,4 @@
-# Android ANT SDK v.C.B5 - 26 Feb 2015
+# Android ANT SDK v.C.B6 - 31 Aug 2015
 This software development kit provides the resources needed to develop an Android application which uses ANT technology to communicate wirelessly between ANT enabled devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to connect to ANT+ devices on the ANT+ network, you must use the ANT+ Android SDK instead.
@@ -27,9 +27,9 @@ This SDK is available from:
 
 * Creating ANT Android Applications (.pdf)
 * API
-  * ANT Lib 4.12.0 (.jar and Javadoc)
+  * ANT Lib 4.14.0 (.jar and Javadoc)
 * Services
-  * ANT Radio Service 4.12.0 (.apk)
+  * ANT Radio Service 4.14.0 (.apk)
   * ANT USB Service 1.4.0 (.apk)
 * Sample Applications
   * Acquire Channels Sample 1.2.0 (.apk and source)
@@ -46,6 +46,22 @@ If you have any questions about developing ANT applications or need help visit t
 
 Android ANT SDK Changelog
 ==========================================
+
+<u>v.C.B6 - 31 Aug 2015</u>
+-----------------------------------------
+> ANT Radio Service and ANTLib - v.4.14.0
+> -----------------------------------------------------
+> * IMPORTANT BEHAVIOUR CHANGE: Add Channel Not Available Exception if getAdapterInfo is called before service is not initialized instead of returning blank list [ARS + AntLib]
+> * IMPORTANT BEHAVIOUR CHANGE: Only perform error recovery channel release when channel closes with an ack in progress on adapters with firmware affected by this bug (see Javadoc for startSendAcknowledgedData) [ARS]
+> * Added logic to ignore built-in ANT adapters which never properly initialize making legacy apps never able to access USB adapters [ARS]
+> * Add support for fast channel initiation feature in extended assignment [ARS + AntLib]
+> * Add support for search uplink optimization feature [ARS + AntLib]
+> * Add finalizer to ANT channel to prevent apps from leaking channels [AntLib]
+> * Improve Javadoc explanations of search time outs [AntLib]
+> * Fix search priority capability being reported properly in capabilities [ARS + AntLib]
+> * Fix some exceptions during service intialization and shutdown [ARS]
+> * Always send ChannelsAvailable broadcast even if no apps are actively using channels [ARS]
+
 
 <u>v.C.B5 - 26 Feb 2015</u>
 -----------------------------------------

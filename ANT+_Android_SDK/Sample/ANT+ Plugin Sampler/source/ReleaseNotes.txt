@@ -1,6 +1,6 @@
 ANT Plus Plugins Sampler - Release Notes
-v3.5.0
-2015-3-20
+v3.6.0
+2015-9-1
 
 Copyright (c) Dynastream Innovations Inc. 2015
 All rights reserved.
@@ -8,8 +8,8 @@ All rights reserved.
 =============================================================
 1. LIBRARY VERSIONS
 
-FIT:                           14.10
-AntPluginLib                   3.5.0
+FIT:                           16.00
+AntPluginLib                   3.6.0
 
 =============================================================
 2. BUILD TOOLS

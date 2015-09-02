@@ -10,8 +10,8 @@ All rights reserved.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dsi.ant.antplus.pluginsampler"
-    android:versionCode="030500"
-    android:versionName="3.5.0" >
+    android:versionCode="030600"
+    android:versionName="3.6.0" >
 
     <uses-sdk
         android:minSdkVersion="7"

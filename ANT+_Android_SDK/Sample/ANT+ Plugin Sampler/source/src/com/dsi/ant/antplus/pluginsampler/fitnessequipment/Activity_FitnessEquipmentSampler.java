@@ -1557,7 +1557,7 @@ public class Activity_FitnessEquipmentSampler extends Activity
                                                     textView_CurrentTemperature.setText("N/A");
 
                                                 if(calibrationInProgress.targetSpeed != null)
-                                                    textView_TargetSpeed.setText(calibrationInProgress.currentTemperature.toString() + "m/s");
+                                                    textView_TargetSpeed.setText(calibrationInProgress.targetSpeed.toString() + "m/s");
                                                 else
                                                     textView_TargetSpeed.setText("N/A");
 
