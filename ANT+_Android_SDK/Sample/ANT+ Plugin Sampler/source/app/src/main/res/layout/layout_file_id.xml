@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:paddingBottom="3dp"
+	android:paddingTop="3dp"
+	android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBEBEB"
+        android:gravity="center"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:textStyle="bold"
+             android:text="File Identifier" />
+
+	</RelativeLayout>
+    
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Type:" />
+	                
+		<TextView
+		    android:id="@+id/textView_Type"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Manufacturer:" />
+         
+         <TextView
+             android:id="@+id/textView_Manufacturer"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Product:" />
+	                
+		<TextView
+		    android:id="@+id/textView_Product"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Serial Number:" />
+         
+         <TextView
+             android:id="@+id/textView_SerialNumber"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Creation:" />
+	                
+		<TextView
+		    android:id="@+id/textView_TimeCreated"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="File Identifier Number:" />
+         
+         <TextView
+             android:id="@+id/textView_Number"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+
+</LinearLayout>

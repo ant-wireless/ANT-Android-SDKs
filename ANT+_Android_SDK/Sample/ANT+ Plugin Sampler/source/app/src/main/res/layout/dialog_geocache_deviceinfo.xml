@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+ <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout_buttons">
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+   
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="IdString:"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
+                
+                <TextView
+                    android:id="@+id/textView_IdentificationString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    
+                    android:text="PIN:" />
+                
+                <TextView
+                    android:id="@+id/textView_PIN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Latitude:" />
+                
+                <TextView
+                    android:id="@+id/textView_Latitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Longitude:" />
+                
+                <TextView
+                    android:id="@+id/textView_Longitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="HintString:" />
+                
+                <TextView
+                    android:id="@+id/textView_HintString"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="---" />
+
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="LastVisit (UTC):" />
+                
+                <TextView
+                    android:id="@+id/textView_LastVisitTimestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="---" />
+
+            </LinearLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="NumVisits:" />
+                
+                <TextView
+                    android:id="@+id/textView_NumberOfVisits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="HardwareRevision:" />
+                
+                <TextView
+                    android:id="@+id/textView_HardwareRevision"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="ManufacturerID:" />
+
+                <TextView
+                    android:id="@+id/textView_ManufacturerID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="ModelNumber:" />
+
+                <TextView
+                    android:id="@+id/textView_ModelNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="SoftwareRevision:" />
+
+                <TextView
+                    android:id="@+id/textView_SoftwareRevision"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="SerialNumber:" />
+
+                <TextView
+                    android:id="@+id/textView_SerialNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="BatteryVoltage:" />
+                
+                <TextView
+                    android:id="@+id/textView_BatteryVoltage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EBEBEB"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="BatteryStatus:" />
+                
+                <TextView
+                    android:id="@+id/textView_BatteryStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="OperatingTime:" />
+                
+                <TextView
+                    android:id="@+id/textView_CumulativeOperatingTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D7D7D7"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" 
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="OperatingTimeResolution:" />
+                
+                <TextView
+                    android:id="@+id/textView_CumulativeOperatingTimeResolution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+            </RelativeLayout>
+	</LinearLayout>
+</ScrollView>
+
+<LinearLayout
+     android:id="@+id/linearLayout_buttons"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_alignParentBottom="true"
+     android:layout_centerHorizontal="true" >
+
+	<Button
+	    android:id="@+id/button_ProgramDevice"
+	    android:layout_width="wrap_content"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="center"
+	    android:text="Program Device" />
+	
+	<Button
+	    android:id="@+id/button_RequestAuthToken"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:text="Request Auth Token" />
+
+ </LinearLayout>
+
+</RelativeLayout>

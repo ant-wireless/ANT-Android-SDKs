@@ -1,4 +1,4 @@
-# Android ANT+ SDK v.P.B5 - 31 Aug 2015
+# Android ANT+ SDK v.P.B6 - 03 Dec 2019
 This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started. 
 
 If you are trying to develop an application to use ANT wireless technology freely outside of the defined ANT+ profiles, you must use the ANT Android SDK instead.
@@ -30,19 +30,47 @@ This SDK is available from:
 
 * Creating ANT+ Android Applications
 * API
-  * PluginLib 3.6.0 (.jar and Javadoc)
-  * FIT 16.00 (.jar)
+  * PluginLib 3.8.0 (.aar and Javadoc)
+  * FIT 21.18 (.jar)
 * Services
-  * ANT+ Plugins Service 3.6.0 (.apk)
+  * ANT+ Plugins Service 3.8.0 (.apk)
   * Plugin Manager Launcher 1.1.0 (.apk)
 * Sample Applications
-  * Plugin Sampler 3.6.0 (.apk and source)
-  * ANT+ Demo 3.2.0 (.apk)
-  * Heart Rate Grapher 4.0.0 (.apk)
+  * Plugin Sampler 3.8.0 (.apk and source)
+  * ANT+ Demo 3.3.0 (.apk)
+  * Heart Rate Grapher 4.1.0 (.apk)
 
 
 Android ANT+ SDK Changelog
 =============================================
+
+<u>v.P.B6 - 3 Dec 2019</u>
+--------------------------------------------------
+
+> ANT+ Plugins Service and ANT+ PluginLib Changelog - v.3.8.0
+> -----------------------------------------------------------------------------------
+> * Fix for the SecurityException thrown by BindAndRequest(...) when enabling logging  [Lib + Service]
+> * Addition of Proguard rules to allow for easier APK minification and shrinkification [Lib]
+> * Update to FitLib 21.18 [Lib + Service]
+> 
+>
+> ANT+ Plugin Sampler - v.3.8.0
+> -----------------------------------------------------------------------------------
+> * Migrated to Android Studio 3.5
+> * Updated Copyright
+> * Update to PluginLib v.3.8.0
+> * Update to FitLib v.21.18
+>
+>
+> Heart Rate Grapher - v.4.1.0
+> -----------------------------
+> * Update to PluginLib v.3.8.0
+>
+>
+> ANT+ Demo - v.3.3.0
+> -----------------------------------------------------------------------------------
+> * Update to PluginLib v.3.8.0
+
 
 <u>v.P.B5 - 31 Aug 2015</u>
 --------------------------------------------------

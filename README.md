@@ -15,7 +15,7 @@ This SDK is available from:
 
 # Current Versions:
 * Android ANT SDK v.C.B6 - 31 Aug 2015
-* Android ANT+ SDK v.P.B5 - 31 Aug 2015
+* Android ANT+ SDK v.P.B6 - 03 Dec 2019
 
 # Changelog
 See the README.md file in each respective SDK directory for a detailed changelog.

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:paddingBottom="3dp"
+	android:paddingTop="3dp"
+	android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBEBEB"
+        android:gravity="center"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:textStyle="bold"
+             android:text="Weight Scale Measurement" />
+
+	</RelativeLayout>
+    
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Stamp:" />
+	                
+		<TextView
+		    android:id="@+id/textView_Timestamp"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="User Profile Index:" />
+         
+         <TextView
+             android:id="@+id/textView_UserProfileIndex"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Weight:" />
+	                
+		<TextView
+		    android:id="@+id/textView_Weight"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Percent Fat:" />
+         
+         <TextView
+             android:id="@+id/textView_PercentFat"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Percent Hydration:" />
+	                
+		<TextView
+		    android:id="@+id/textView_PercentHydration"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Visceral Fat Mass:" />
+         
+         <TextView
+             android:id="@+id/textView_VisceralFatMass"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Bone Mass:" />
+	                
+		<TextView
+		    android:id="@+id/textView_BoneMass"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Muscle Mass:" />
+         
+         <TextView
+             android:id="@+id/textView_MuscleMass"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+    </RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#D7D7D7"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Basal Met:" />
+         
+         <TextView
+             android:id="@+id/textView_BasalMet"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+    </RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Active Met:" />
+         
+         <TextView
+             android:id="@+id/textView_ActiveMet"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_HeartRate" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout_TitleAndStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+	     <TextView
+	         android:id="@+id/textView_Status"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="[status]"
+	         android:textAppearance="?android:attr/textAppearanceMedium"
+	         android:textStyle="italic" />
+
+    </LinearLayout>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout_TitleAndStatus">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" >
+            
+        	<Button
+                android:id="@+id/button_getMfgId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Get ANT-FS Mfg ID" />
+            
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp" >
+                
+                <TextView
+                    android:id="@+id/textView_AntFsMfgId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="---" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:layout_toLeftOf="@id/textView_AntFsMfgId"
+                    android:text="ANT-FS Manufacturer ID:" />
+
+            </RelativeLayout>
+            
+            <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="1dp"
+			    android:background="@android:color/darker_gray"/>
+            
+            <Button
+                android:id="@+id/button_requestResetDataAndSetTime"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Request Reset Data and Set Time" />
+            
+            <CheckBox 
+                android:id="@+id/checkbox_setTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:checked="true"
+                android:text="Set time when resetting"/>
+            
+            <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="1dp"
+			    android:background="@android:color/darker_gray"/>
+            
+            <Button
+                android:id="@+id/button_requestDownloadAllHistory"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Request Download of All History" />
+            
+            <CheckBox 
+                android:id="@+id/checkbox_newdataonly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:checked="false"
+                android:text="Only download new data"/>
+            
+            <CheckBox 
+                android:id="@+id/checkbox_monitor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:checked="false"
+                android:text="Monitor for new data"/>
+            
+            <Button 
+                android:id="@+id/button_StopBloodPressureDataMonitor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Stop New Data Monitor"/>
+            
+            <LinearLayout
+                android:id="@+id/linearLayout_BloodPressureCards"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="5dp"
+	            android:orientation="vertical" >
+	            
+                
+            </LinearLayout>
+            
+     	</LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

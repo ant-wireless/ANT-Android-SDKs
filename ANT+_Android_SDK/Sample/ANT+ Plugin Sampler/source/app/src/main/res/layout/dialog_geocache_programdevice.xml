@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:orientation="horizontal"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <RadioButton
+                android:id="@+id/radioButton_UpdateExistingData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:checked="true"
+                android:text="Update" />
+            
+            <RadioButton
+                android:id="@+id/radioButton_ClearExistingData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Clear Existing Values" />
+
+        </RadioGroup>
+        
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:id="@+id/textView_LastVisitTimestampTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:enabled="false"
+                android:text="Choose the data you wish to program by ticking the checkbox and then setting the value." />
+        </RelativeLayout>
+        
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D7D7D7"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:text="IdString:" />
+
+            <EditText
+                android:id="@+id/editText_IdentificationString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="text|textCapCharacters"
+                android:maxLength="9"
+                android:minWidth="125dp"
+                android:text="" />
+
+            <CheckBox
+                android:id="@+id/checkBox_EnableIdentifcationString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/editText_IdentificationString"
+                android:gravity="right"
+                android:text="" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:text="PIN:" />
+
+            <EditText
+                android:id="@+id/editText_PIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="10"
+                android:minWidth="125dp"
+                android:text="0000000000"
+                tools:ignore="TextFields" />
+
+            <CheckBox
+                android:id="@+id/checkBox_EnablePIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/editText_PIN"
+                android:gravity="right"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D7D7D7"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:text="Latitude:" />
+
+            <EditText
+                android:id="@+id/editText_Latitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:minWidth="125dp"
+                android:text="80.568" />
+
+            <CheckBox
+                android:id="@+id/checkBox_EnableLatitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/editText_Latitude"
+                android:gravity="right"
+                android:text="" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:text="Longitude:" />
+
+            <EditText
+                android:id="@+id/editText_Longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:minWidth="125dp"
+                android:text="-170.56865" />
+
+            <CheckBox
+                android:id="@+id/checkBox_EnableLongitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/editText_Longitude"
+                android:gravity="right"
+                android:text="" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D7D7D7"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="HintString:" />
+
+            <CheckBox
+                android:id="@+id/checkBox_EnableHintString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/editText_HintString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:enabled="false"
+                android:inputType="textMultiLine"
+                android:text="Hint string goes here, could be multiple lines" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="Last Visit Information:" />
+
+            <CheckBox
+                android:id="@+id/checkBox_EnableLastVisitInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:id="@+id/textView_NumberOfVisitsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:enabled="false"
+                android:text="NumVisits:" />
+
+            <EditText
+                android:id="@+id/editText_NumberOfVisits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="5"
+                android:minWidth="125dp"
+                android:text="00000" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:id="@+id/textView_LastVisitDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:enabled="false"
+                android:text="LastVisit Date:" />
+
+            <TextView
+                android:id="@+id/textView_LastVisitDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="#DBDBDB"
+                android:enabled="false"
+                android:gravity="center"
+                android:minWidth="125dp"
+                android:minHeight="40dp"
+                android:text="25 Mar 2013" />
+
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBEB"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                android:id="@+id/textView_LastVisitTimeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:enabled="false"
+                android:text="LastVisit Time (UTC):" />
+            
+            <TextView
+                android:id="@+id/textView_LastVisitTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="#DBDBDB"
+                android:gravity="center"
+                android:enabled="false"
+                android:inputType="time"
+                android:minWidth="125dp"
+                android:minHeight="40dp"
+                android:text="3:30pm" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

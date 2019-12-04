@@ -1,5 +1,5 @@
 This software is subject to the ANT+ Shared Source License www.thisisant.com/swlicenses
-Copyright (c) Dynastream Innovations, Inc. 2013
+Copyright (c) Garmin Canada, Inc. 2019
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are 

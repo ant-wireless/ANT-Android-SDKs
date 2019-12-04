@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dsi.ant.antplus.pluginsampler"
+    android:versionCode="030800"
+    android:versionName="3.8.0" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Activity_Dashboard"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.heartrate.Activity_SearchUiHeartRateSampler"
+            android:label="Heart Rate Plugin Sampler" 
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.heartrate.Activity_AsyncScanHeartRateSampler"
+            android:label="Async Scan Demo Sampler" 
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity
+            android:name=".Activity_BikeCadenceSampler"
+            android:label="Bike Cadence Plugin Sampler" 
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity
+            android:name=".Activity_BikeSpeedDistanceSampler"
+            android:label="Bike Speed and Distance Plugin Sampler" 
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.Activity_EnvironmentSampler"
+            android:label="Environment Plugin Sampler" 
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.geocache.Activity_GeoScanList"
+            android:label="Geocache Plugin Sampler" 
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity 
+            android:name=".Activity_StrideSdmSampler" 
+            android:label="Stride SDM Plugin Sampler" 
+            android:screenOrientation="portrait" 
+            android:configChanges="orientation"/>
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_AudioControllableDeviceSampler"
+            android:configChanges="orientation"
+            android:label="Audio Controllable Device Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_AudioRemoteControlSampler"
+            android:configChanges="orientation"
+            android:label="Audio Remote Control Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoControllableDeviceSampler"
+            android:configChanges="orientation"
+            android:label="Video Controllable Device Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_VideoRemoteControlSampler"
+            android:configChanges="orientation"
+            android:label="Video Remote Control Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericControllableDeviceSampler"
+            android:configChanges="orientation"
+            android:label="Generic Controllable Device Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.controls.Activity_GenericRemoteControlSampler"
+            android:configChanges="orientation"
+            android:label="Generic Remote Control Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity 
+            android:name="com.dsi.ant.antplus.pluginsampler.weightscale.Activity_WeightScaleSampler" 
+            android:label="Weight Scale Plugin Sampler" 
+            android:screenOrientation="portrait" 
+            android:configChanges="orientation"/>
+        <activity 
+            android:name="com.dsi.ant.antplus.pluginsampler.fitnessequipment.Activity_FitnessEquipmentSampler" 
+            android:label="Fitness Equipment Plugin Sampler" 
+            android:screenOrientation="portrait" 
+            android:configChanges="orientation"/>
+        <activity 
+            android:name="com.dsi.ant.antplus.pluginsampler.bloodpressure.Activity_BloodPressureSampler" 
+            android:label="Blood Pressure Plugin Sampler" 
+            android:configChanges="orientation" 
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.dsi.ant.antplus.pluginsampler.Activity_BikePowerSampler" 
+            android:label="Bike Power Plugin Sampler" 
+            android:screenOrientation="portrait" 
+            android:configChanges="orientation"/>
+        <activity android:name="com.dsi.ant.antplus.pluginsampler.watchdownloader.Activity_WatchScanList" 
+            android:label="Watch Downloader Plugin Sampler" 
+            android:screenOrientation="portrait" 
+            android:configChanges="orientation"/>
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.multidevicesearch.Activity_MultiDeviceFilter"
+            android:label="Multi-Device Search Plugin Sampler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.dsi.ant.antplus.pluginsampler.multidevicesearch.Activity_MultiDeviceSearchSampler"
+            android:label="Multi-Device Search Plugin Sampler"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>
