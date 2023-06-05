@@ -1,17 +1,13 @@
 ANT Plus Plugins Sampler - Release Notes
-v3.6.0
-2015-9-1
+v3.8.0
+2019-12-3
 
-Copyright (c) Dynastream Innovations Inc. 2015
+Copyright (c) Garmin Canada Inc. 2019
 All rights reserved.
 
 =============================================================
 1. LIBRARY VERSIONS
 
-FIT:                           16.00
-AntPluginLib                   3.6.0
-
-=============================================================
-2. BUILD TOOLS
-Proguard:                      4.10
-Build server App scripts:      1.1.0
+FIT:                            21.18
+AntPluginLib:                   3.8.0
+AndroidX Legacy Support V4:     1.0.0

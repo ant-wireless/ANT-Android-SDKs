@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:paddingBottom="3dp"
+	android:paddingTop="3dp"
+	android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBEBEB"
+        android:gravity="center"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:textStyle="bold"
+             android:text="User Profile" />
+
+	</RelativeLayout>
+    
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Message Index:" />
+	                
+		<TextView
+		    android:id="@+id/textView_MessageIndex"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Local ID:" />
+         
+         <TextView
+             android:id="@+id/textView_LocalId"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Friendly Name:" />
+	                
+		<TextView
+		    android:id="@+id/textView_FriendlyName"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Gender:" />
+         
+         <TextView
+             android:id="@+id/textView_Gender"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Age:" />
+	                
+		<TextView
+		    android:id="@+id/textView_Age"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Height:" />
+         
+         <TextView
+             android:id="@+id/textView_Height"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#D7D7D7"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Activity Class:" />
+         
+         <TextView
+             android:id="@+id/textView_ActivityClass"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+
+</LinearLayout>

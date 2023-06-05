@@ -1,4 +1,4 @@
-Acquire Channels Backgorund Scan - Release Notes
+Acquire Channels Background Scan - Release Notes
 
 Uses:
-Android ANT Lib       : 4.10.0
+Android ANT Lib       : 4.16.0
