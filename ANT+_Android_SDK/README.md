@@ -229,7 +229,7 @@ Android ANT+ SDK Changelog
 > Ant+ Plugins Service and ANT+ PluginLib Changelog - 18 June 2014 - v.3.0.0 RC1
 > -------------------------------------------------------------
 >
-> ###New Features and Improvements
+> ### New Features and Improvements
 >
 > * Add Multi Device Search capability. Multi Device Search is now the preferred method to do asynchronous searches. It allows searching for multiple device types at once and can retrieve additional information during the scan (This first version provides RSSI proximity values).
 > * Add PccReleaseHandle object as a return value to all request access calls. The release handle allows you to release the device at any time in a deterministic way, including before the intial result is received. We recommend that all apps keep the release handle of every PCC access request made, then call close on them whenever the Pcc is no longer required or before the app shuts down. It is safe to call close at any time and multiple times.
@@ -247,8 +247,8 @@ Android ANT+ SDK Changelog
 > * Minor improvements to some function signatures and names to match profiles and common usages
 > <br>
 > <br>
-> ###Exclusive New Features for ANT+ Members
-> ####<i>(ANT+ Members get exclusive access to new profiles for a given period of time, will be released publically at a later time)</i>
+> ### Exclusive New Features for ANT+ Members
+> #### <i>(ANT+ Members get exclusive access to new profiles for a given period of time, will be released publically at a later time)</i>
 >
 > * Add Fitness Equipment Controls (including trainer, stationary bike, and open broadcast connections) support
 > * Add support for bike speed and cadence new pages 4 and 5
