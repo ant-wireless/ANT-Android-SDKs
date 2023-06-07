@@ -204,7 +204,7 @@ v.C.B1 RC1 - 20 June 2014
 > ANT Radio Service and ANTLib - 18 June 2014 - v.4.5.0 (RC7, RC4)
 > -------------------------------------------------------------
 >
-> ###New Features and Improvements
+> ### New Features and Improvements
 >
 > * Added a new ChannelNotAvailableReason - ANT_DISABLED_AIRPLANE_MODE_ON to indicate that airplane mode must be disabled before ANT can be used
 > * Channels interface will now attempt to automatically enable disabled adapters
@@ -215,7 +215,7 @@ v.C.B1 RC1 - 20 June 2014
 > * Removed requestSerialNumber() as it is unused by current multi-mode implementations
 > <br>
 > <br>
-> ###Bug Fixes
+> ### Bug Fixes
 >
 > * Fix channel spontaneously closing when re-opening channels quickly
 > * Fix sending multiple channel death messages when channel dies
