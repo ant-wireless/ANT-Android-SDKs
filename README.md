@@ -10,28 +10,31 @@ This SDK contains the required resources for developing ANT enabled applications
 
 This SDK is available from:
 
-* http://www.thisisant.com/developer/resources/downloads/
-* https://github.com/ant-wireless/ANT-Android-SDKs (subscribe as a watcher to be notified of updates)
+* <http://www.thisisant.com/developer/resources/downloads/>
+* <https://github.com/ant-wireless/ANT-Android-SDKs> (subscribe as a watcher to be notified of updates)
 
-# Current Versions:
-* Android ANT SDK v.C.B6 - 31 Aug 2015
-* Android ANT+ SDK v.P.B6 - 05 Jun 2023
+# Current Versions
+
+* Android ANT SDK v.C.B7 - 05 Jun 2023
+* Android ANT+ SDK v.P.B7 - 05 Jun 2023
 
 # Changelog
+
 See the README.md file in each respective SDK directory for a detailed changelog.
 
 # FAQ
+
 **What is ANT?**
-> Visit http://www.thisisant.com/developer for more information
+> Visit <http://www.thisisant.com/developer> for more information
 
 **What is the difference between ANT and ANT+?**
-> Visit http://www.thisisant.com/developer/ant-plus/ant-antplus-defined/
+> Visit <http://www.thisisant.com/developer/ant-plus/ant-antplus-defined/>
 
 **Where can I get more info about ANT on Android (e.g. hardware requirements, developer instructions, licensing information)?**
-> Visit http://www.thisisant.com/developer/ant/ant-in-android/ for more info
+> Visit <http://www.thisisant.com/developer/ant/ant-in-android/> for more info
 
 **How do I use the ANT and ANT+ APIs?**
 > Refer to the "Quick Start Guide" in the readme files of the ANT and ANT+ SDK main folders.
 
 **Where can I get help developing my ANT applications?**
-> Visit the ANT developer forums at http://www.thisisant.com/forum/ or become an ANT+ Member for direct support.
+> Visit the ANT developer forums at <http://www.thisisant.com/forum/> or become an ANT+ Member for direct support.

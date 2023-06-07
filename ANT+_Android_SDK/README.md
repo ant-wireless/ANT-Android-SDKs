@@ -1,4 +1,4 @@
-# Android ANT+ SDK v.P.B6 - 05 Jun 2023
+# Android ANT+ SDK v.P.B7 - 05 Jun 2023
 
 This software development kit provides the resources needed to develop an Android application which uses the defined ANT+ profiles to communicate wirelessly with the millions of existing ANT+ devices. It includes instructions, API and documentation, and reference sample applications. The PDF _Creating ANT+ Android Applications_ explains how to get started.
 
@@ -247,7 +247,9 @@ Android ANT+ SDK Changelog
 > * Minor improvements to some function signatures and names to match profiles and common usages
 > <br>
 > <br>
+>
 > ### Exclusive New Features for ANT+ Members
+>
 > #### <i>(ANT+ Members get exclusive access to new profiles for a given period of time, will be released publically at a later time)</i>
 >
 > * Add Fitness Equipment Controls (including trainer, stationary bike, and open broadcast connections) support
