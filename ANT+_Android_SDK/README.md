@@ -44,7 +44,7 @@ This SDK is available from:
 Android ANT+ SDK Changelog
 =============================================
 
-<u>v.P.B6 - 05 Jun 2023</u>
+<u>v.P.B7 - 05 Jun 2023</u>
 --------------------------------------------------
 
 > Ant+ Plugins Service and ANT+ PluginLib Changelog - v.3.9.0
@@ -77,6 +77,33 @@ Android ANT+ SDK Changelog
 > -----------------------------------------------------------------------------------
 >
 > * Update to PluginLib v.3.9.0
+
+<u>v.P.B6 - 3 Dec 2019</u>
+--------------------------------------------------
+
+> ANT+ Plugins Service and ANT+ PluginLib Changelog - v.3.8.0
+> -----------------------------------------------------------------------------------
+> * Fix for the SecurityException thrown by BindAndRequest(...) when enabling logging  [Lib + Service]
+> * Addition of Proguard rules to allow for easier APK minification and shrinkification [Lib]
+> * Update to FitLib 21.18 [Lib + Service]
+> 
+>
+> ANT+ Plugin Sampler - v.3.8.0
+> -----------------------------------------------------------------------------------
+> * Migrated to Android Studio 3.5
+> * Updated Copyright
+> * Update to PluginLib v.3.8.0
+> * Update to FitLib v.21.18
+>
+>
+> Heart Rate Grapher - v.4.1.0
+> -----------------------------
+> * Update to PluginLib v.3.8.0
+>
+>
+> ANT+ Demo - v.3.3.0
+> -----------------------------------------------------------------------------------
+> * Update to PluginLib v.3.8.0
 
 <u>v.P.B5 - 31 Aug 2015</u>
 --------------------------------------------------
