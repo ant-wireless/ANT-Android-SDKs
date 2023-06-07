@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ListView android:layout_height="wrap_content"
+        android:id="@android:id/list"
+        android:layout_width="fill_parent" 
+        android:layout_weight="1.0"/>
+
+    <TextView
+        android:id="@+id/textView_PluginSamplerVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sampler Version:" />
+
+    <TextView
+        android:id="@+id/textView_PluginLibVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Built w/ PluginLib:" />
+
+    <TextView
+        android:id="@+id/textView_PluginsPkgVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Installed Plugin Version:" />
+
+</LinearLayout>

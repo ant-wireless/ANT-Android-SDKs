@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<resources>
+
+    <string name="app_name">ANT+ Plugin Sampler</string>
+    <string name="menu_reset">Reset Connection</string>
+    <string name="no_activities_available">No Activities Available</string>
+    <string-array name="device_types">
+        <item>Bike Power</item>
+        <item>Controllable Device</item>
+        <item>Fitness Equipment</item>
+        <item>Blood Pressure</item>
+        <item>Geocache</item>
+        <item>Environment</item>
+        <item>Weight Scale</item>
+        <item>Heart Rate</item>
+        <item>Bike Speed and Cadence</item>
+        <item>Bike Cadence</item>
+        <item>Bike Speed</item>
+        <item>Stride-based Speed and Distance</item>
+    </string-array>
+
+    <string name="label_multiDeviceSearchButton">Start Search</string>
+    <string name="searchingText">Searching for devices&#8230;</string>
+    <string name="label_alreadyConnected">Already Connected Devices:</string>
+    <string name="label_foundDevices">Devices Found In Scan:</string>
+    <string name="label_selectAll">Select All</string>
+    <string name="label_deviceTypeFilter">Select Device Types to Search:</string>
+    <string name="label_RSSI">RSSI: </string>
+
+</resources>

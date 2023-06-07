@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This software is subject to the license described in the License.txt file
+  ~ included with this software distribution. You may not use this file except in compliance
+  ~ with this license.
+  ~
+  ~ Copyright (c) Garmin Canada Inc. 2019
+  ~ All rights reserved.
+  -->
+
+<!DOCTYPE AndroidXML>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:paddingBottom="3dp"
+	android:paddingTop="3dp"
+	android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBEBEB"
+        android:gravity="center"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:textStyle="bold"
+             android:text="Blood Pressure Measurement" />
+
+	</RelativeLayout>
+    
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Stamp:" />
+	                
+		<TextView
+		    android:id="@+id/textView_Timestamp"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="User Profile Index:" />
+         
+         <TextView
+             android:id="@+id/textView_UserProfileIndex"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Systolic Pressure:" />
+	                
+		<TextView
+		    android:id="@+id/textView_SystolicPressure"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Diastolic Pressure:" />
+         
+         <TextView
+             android:id="@+id/textView_DiastolicPressure"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Mean Arterial Pressure:" />
+	                
+		<TextView
+		    android:id="@+id/textView_MeanArterialPressure"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Heart Rate:" />
+         
+         <TextView
+             android:id="@+id/textView_HeartRate"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Map 3 Sample Mean:" />
+	                
+		<TextView
+		    android:id="@+id/textView_MapThreeSampleMean"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Map Morning Values:" />
+         
+         <TextView
+             android:id="@+id/textView_MapMorningValues"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Map Evening Values:" />
+	                
+		<TextView
+		    android:id="@+id/textView_MapEveningValues"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+	
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="#EBEBEB"
+         android:paddingBottom="3dp"
+         android:paddingTop="3dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginBottom="5dp"
+             android:text="Heart Rate Type:" />
+         
+         <TextView
+             android:id="@+id/textView_HeartRateType"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:text="---" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:background="#D7D7D7"
+	     android:paddingBottom="3dp"
+	     android:paddingTop="3dp" >
+	     
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginBottom="5dp"
+			android:text="Status:" />
+	                
+		<TextView
+		    android:id="@+id/textView_Status"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:text="---" />
+	
+	</RelativeLayout>
+
+</LinearLayout>

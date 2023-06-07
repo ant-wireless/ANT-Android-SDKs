@@ -1,0 +1,35 @@
+/*
+ * This software is subject to the license described in the License.txt file
+ * included with this software distribution. You may not use this file except in compliance
+ * with this license.
+ *
+ * Copyright (c) Garmin Canada Inc. 2019
+ * All rights reserved.
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.dsi.ant.antplus.pluginsampler"
+        minSdkVersion 14
+        targetSdkVersion 33
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    namespace 'com.dsi.ant.antplus.pluginsampler'
+}
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation files('libs/fit_21.105.00.jar')
+    implementation files('libs/android-antplus-plugin-lib-release_3.9.0.aar')
+}

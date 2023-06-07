@@ -6,7 +6,7 @@ This SDK contains the required resources for developing ANT enabled applications
 
 * <b>ANT+ SDK (often referred to as the 'ANT+ Plugins')</b> enables Android developers to easily connect to ANT+ certified devices through a high level, intuitive API. The ANT+ SDK abstracts the connection and pairing process and the decoding and sending of data into easy to use functions and events.
 
-* <b>ANT SDK (often referred to as the 'AntLib' or the 'ANT channels interface')</b> enables developers to communicate directly with the ANT protocol to create and connect to custom ANT networks with flexible and powerful communication capabilities. 
+* <b>ANT SDK (often referred to as the 'AntLib' or the 'ANT channels interface')</b> enables developers to communicate directly with the ANT protocol to create and connect to custom ANT networks with flexible and powerful communication capabilities.
 
 This SDK is available from:
 
@@ -15,7 +15,7 @@ This SDK is available from:
 
 # Current Versions:
 * Android ANT SDK v.C.B6 - 31 Aug 2015
-* Android ANT+ SDK v.P.B5 - 31 Aug 2015
+* Android ANT+ SDK v.P.B6 - 05 Jun 2023
 
 # Changelog
 See the README.md file in each respective SDK directory for a detailed changelog.
