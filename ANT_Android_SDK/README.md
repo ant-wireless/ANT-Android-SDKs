@@ -31,7 +31,7 @@ This SDK is available from:
   * ANT Lib 4.16.0 (.aar and Javadoc)
 * Services
   * ANT Radio Service 4.18.0 (.apk)
-  * ANT USB Service 1.6.0 (.apk)
+  * ANT USB Service 1.6.1 (.apk)
 * Sample Applications
   * Acquire Channels Sample 1.3.0 (.apk and source)
   * Background Scan Sample 1.2.0 (.apk and source)
@@ -58,11 +58,11 @@ Android ANT SDK Changelog
 > * Updated AntLib to v4.16.0
 > * Updated ANT Radio Service to v4.18.0
 >
-> ANT USB Service - v.1.6.0
+> ANT USB Service - v.1.6.1
 > -----------------------------------------------------
 >
 > * Updated to support Android 13 (API Level 33)
-> * Updated ANT USB Service to v1.6.0
+> * Updated ANT USB Service to v1.6.1
 >
 > Acquire Channels Sample - v.1.3.0
 > -----------------------------------------------------
@@ -215,6 +215,7 @@ v.C.B1 RC1 - 20 June 2014
 > * Removed requestSerialNumber() as it is unused by current multi-mode implementations
 > <br>
 > <br>
+>
 > ### Bug Fixes
 >
 > * Fix channel spontaneously closing when re-opening channels quickly
