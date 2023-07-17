@@ -1,6 +1,6 @@
 # ANT and ANT+ Android SDKs
 
-The Android ANT and Android ANT+ SDKs enable developers to create unique applications that use ANT wireless communication technology to communicate between a wide array of devices over various network configurations. ANT is a proven ultra-low power wireless sensor network protocol operating in the 2.4 GHz ISM band and is an effective solution for personal and local area networks. ANT is available on many Android devices including most modern flagship phones from Samsung and Sony. Additionally, ANT can be used on other devices with USB-Host(USB OTG) support through the use of an ANT USB stick.
+The Android ANT and Android ANT+ SDKs use ANT wireless communication technology to communicate between a wide array of devices over various network configurations. ANT is a proven ultra-low power wireless sensor network protocol operating in the 2.4 GHz ISM band. ANT wireless communication technology is effective for personal and local area networks. ANT is compatible with most modern Android flagship phones like Samsung and Sony. Other devices use ANT with USB-Host(USB OTG) support through an ANT USB stick.
 
 This SDK contains the required resources for developing ANT enabled applications on Android platforms:
 
